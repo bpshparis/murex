@@ -303,9 +303,9 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ![](res/win.png)
 
-* Download and **install** [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/winjdk.jpg)
-* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) into your **home directory**.
-* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe), rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
+* Download and **install** [latest JDK 8](https://ibm.ent.box.com/v/murex-festival/file/481735358242) <!--(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/winjdk.jpg) -->
+* Download **only** [WAS Liberty Kernel](https://ibm.ent.box.com/v/murex-festival/file/481751728904) <!-- (https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) -->into your **home directory**.
+* Download [jq](https://ibm.ent.box.com/v/murex-festival/file/481751500779) <!-- (https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe) -->, rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
 
 ![](res/mac.png)
 
