@@ -346,9 +346,9 @@ Open a shell ![](res/term.png)
 
 ![](res/cmd.png)![](res/term.png)
 
-Check javac command is available:
+Check java command is available:
 
-	javac -version
+	java -version
 
 Check jq command is available:
 
