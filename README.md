@@ -303,7 +303,7 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ![](res/win.png)
 
-* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it. ![](res/winjdk.jpg)
+* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: Not **Demos and Samples** :no_entry: and install it. ![](res/winjdk.jpg)
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
 * Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe), rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
 
