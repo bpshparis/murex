@@ -326,9 +326,13 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 :information_source: Most of following steps will be achieved  with command line
 
-command prompt ![](res/cmd.png)  for ![](res/win.png) 
+![](res/win.png) 
 
-and shell ![](res/term.png)  for ![](res/mac.png) and ![](res/tux.png) 
+Open a command prompt ![](res/cmd.png)
+
+![](res/mac.png) ![](res/tux.png) 
+
+Open a shell ![](res/term.png)
 
 :bulb: **Keep this command line prompt or shell should opened till the end of the tutorial.**
 
@@ -355,6 +359,10 @@ Check jq command is available:
 Browse [github application repository](https://github.com/bpshparis/murex), download code (e.g. **murex-master.zip**)
 ![](res/dlcode.jpg)
 
+
+
+![](res/win.png)![](res/mac.png)![](res/tux.png)
+
 and unzip it:
 
 :bulb: Feel free to unzip with any GUI tool but :warning: be sure to unzip in your **home directory**.	
@@ -365,10 +373,15 @@ and unzip it:
 
 #### Install WAS Liberty Kernel
 
+![](res/win.png)![](res/mac.png)![](res/tux.png)
+
 Unzip WAS Liberty Kernel product (e.g. **wlp-kernel-19.0.0.6.zip)**
 
 :bulb: Feel free to unzip with any GUI tool but :warning: be sure to unzip in your **home directory**.
-	
+
+:bulb: You should now have a directory called **wlp** in your **home directory**.
+
+
 <br>	
 
 #### Create defaultServer
