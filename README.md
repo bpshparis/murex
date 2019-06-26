@@ -84,8 +84,7 @@ Choose your favorite text editor, create a new file, paste the following content
         "role": "Manager"
           }
         ],
-        "service": "tone-analyzer",
-        "instance": "Tone Analyzer-fs"
+        "service": "tone-analyzer"
       },
       "1": {
         "credentials": [
@@ -97,8 +96,7 @@ Choose your favorite text editor, create a new file, paste the following content
         "role": "Manager"
           }
         ],
-        "service": "natural-language-understanding",
-        "instance": "Natural Language Understanding-qf"
+        "service": "natural-language-understanding"
       },
       "2": {
         "credentials": [
@@ -110,8 +108,7 @@ Choose your favorite text editor, create a new file, paste the following content
         "role": "Manager"
           }
         ],
-        "service": "watson-vision-combined",
-        "instance": "Visual Recognition-gd"
+        "service": "watson-vision-combined"
       }
 }
 ```
