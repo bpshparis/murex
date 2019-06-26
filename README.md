@@ -330,11 +330,15 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 Open a command prompt ![](res/cmd.png)
 
+:bulb: **Keep this command line prompt opened till the end of the tutorial.**
+
+
+
 ![](res/mac.png) ![](res/tux.png) 
 
 Open a shell ![](res/term.png)
 
-:bulb: **Keep this command line prompt or shell should opened till the end of the tutorial.**
+:bulb: **Keep this shell should opened till the end of the tutorial.**
 
 <br>
 
