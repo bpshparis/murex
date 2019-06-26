@@ -35,14 +35,6 @@ MailBox Analyzer is an application using [Watson Developer Cloud Java SDK](https
     + [Using Cloud Foundry](#using-cloud-foundry)
 <br>
 
-<!--
-### Overview of the application
-
-A sample demo of the application with a mailbox analysis *may be* available [here](http://ma.bpshparis.eu-de.mybluemix.net).
-
-<br>
--->
-
 ### Application Flow
 ![Flow](images/appFlow.jpg)
 
@@ -302,25 +294,19 @@ You can check it in your [IBM Cloud Dashboard](https://console.bluemix.net/dashb
 
 <br>
 
-#### Check everything is installed properly
-
-:information_source: Following steps will be achieved  with command line:
+:information_source: Most of following steps will be achieved  with command line
 
 command prompt ![](res/cmd.png)  for ![](res/win.png) 
 
 and shell ![](res/term.png)  for ![](res/mac.png) and ![](res/tux.png) 
 
-:warning: **This command line prompt or shell should remain opened till the end of the tutorial.**
+:bulb: **Keep this command line prompt or shell should opened till the end of the tutorial.**
 
-Move to our user home directory:
+<br>
 
-![](res/win.png)
+#### Check everything is installed properly
 
-	cd %HOMEPATH%
-
-![](res/mac.png) ![](res/tux.png)
-
-	cd $HOME
+![](res/cmd.png)![](res/term.png)
 
 Check javac command is available:
 
@@ -354,7 +340,7 @@ Unzip **wlp-kernel-19.0.0.6.zip**
 :bulb: Feel free to unzip with any GUI tool but be sure to unzip in your **home directory**.
 	
 <br>	
-	
+
 #### Create defaultServer
 
 ![](res/win.png)![](res/cmd.png)
@@ -412,24 +398,24 @@ to configure defaultServer.
 ![](res/notepad.png) ![](res/win.png)
 
 Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following content:
+:warning: Substitute **%HOMEPATH%** with the **full path** of your home directory. 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
     <dir sourceOnDisk="%HOMEPATH%/murex-master/WebContent" targetInArchive="/"/>
 </archive>
 ```
-:warning: Substitute **%HOMEPATH%** with the **full path** of your home directory. 
 
 ![](res/notepad.png) ![](res/mac.png) ![](res/tux.png)
 
 Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following content:
+:warning: Substitute **$HOME** with the **full path** of your home directory. 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
     <dir sourceOnDisk="$HOME/murex-master/WebContent" targetInArchive="/"/>
 </archive>
 ```
-:warning: Substitute **$HOME** with the **full path** of your home directory. 
 
 #### Set environment to access Watson service instances in IBM Cloud
 
@@ -515,80 +501,16 @@ Come back in your home directory and start WAS Liberty Kernel defaultServer
 	wlp/bin/server start defaultServer
 
 ![](res/web.png)
-Then browse [app](http://localhost:9080/app)
+Then Ctrl + Click  [app](http://localhost:9080/app)
 
-> :bulb: Ctrl + Click on links below to open them in new tab and keep the tutorial tab opened.
 
-When app is loaded, click on ![](res/envelope.png) to upload sample attached documents in Discovery Collection and get sample mails.
 
-Once mails are displayed, click ![](res/cogwheels.png) to send sample mails for analysis.
+When app is loaded:
 
-When Watson returned, **3 new tabs** (one per service) should appear and are ready to browse. 
-
-![](res/watsontabs.png)
-
-<br>
-
-### Send your own datas for analysis
-
-![](res/notepad.png)
-
-Edit a json file of this form :
-
-```
-[
-  {
-    "subject": "paste some text between double quotation marks or set to null",
-    "content": "paste some text between double quotation marks or set to null",
-    "picture": "paste a picture file name between double quotation marks or set to null",
-    "face": "paste a picture file name between double quotation marks or set to null"
-  }
-]
-```
-
-An example for 2 mails with documents and pictures attached :
-
-```
-[
-  {
-      "subject": "At UEFA, Mounting Concern About A.C. Milan’s Murky Finances",
-      "content": null,
-      "picture": "pic3.jpg",
-      "face": null
-  },
-  {
-      "subject": null,
-      "content": "At a flea market six years ago, a North Carolina lawyer named Frank Abrams unknowingly bought...",
-      "picture": null,
-      "face": "face4.jpg"
-  }
-]
-```
-
-Save this file as **mails.json** 
-
-:bulb: Test it with jq
-
-	jq . mails.json
-
-The command should display pretty json without error.
-
-Now **zip mails.json with all files set in picture and face fields from mails.json**.
-
-:bulb: your archive should be this form
-
-```
-Archive:  mails0.zip
-    testing: face4.jpg                OK
-    testing: mails.json               OK
-    testing: pic3.jpg                 OK
-No errors detected in compressed data of mails0.zip.
-```
-Now go back to your application and click ![](res/compressed.png) to upload your datas.
-
-Once your datas have been upload, click on ![](res/envelope.png) to upload your attached documents in Discovery Collection and get your mails.
-
-Once your mails are displayed, click ![](res/cogwheels.png) to send your mails for analysis.
+1. Click on ![](res/compose.png) to compose a mail and when done click ![](res/send.png) to send it to server.
+2. Click on ![](res/envelope.png) to get your mail from server.
+3. Once mails are displayed, click ![](res/cogwheels.png) to send mail for analysis.
+4. When Watson returned, **3 new tabs** (one per service) should appear and are ready to browse. ![](res/watsontabs.png)
 
 <br>
 
@@ -603,15 +525,11 @@ Once your mails are displayed, click ![](res/cogwheels.png) to send your mails f
 
 ![](res/web.png)
 
-Browse your [IBM Cloud dashboard](https://console.bluemix.net/dashboard/apps)
+Ctrl + Click on [IBM Cloud dashboard](https://console.bluemix.net/dashboard/apps)
 
 Open each services **More Actions** popup menu and choose **Delete Service**
 
 ![](res/delsvc.png)
-
-Do the same for application. Open application **More Actions** popup menu and choose **Delete App**
-
-![](res/delapp.png)
 
 <br>
 
@@ -637,6 +555,8 @@ Do the same for application. Open application **More Actions** popup menu and ch
 [Tool](https://watson-visual-recognition.ng.bluemix.net/)
 
 <br>
+
+<!--
 
 ### Annexes
 
@@ -867,4 +787,4 @@ exit 0;
 ```
 
 
-​	
+​	-->
