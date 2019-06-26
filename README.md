@@ -102,7 +102,7 @@ Choose your favorite text editor, create a new file, paste the following content
 }
 ```
 
-, save it as **vcap.json** and keep it opened.
+, save it as **vcap.json** and :warning: **keep it opened**.
 
 <br>
 
@@ -281,21 +281,24 @@ You can check it in your [IBM Cloud Dashboard](https://console.bluemix.net/dashb
 
 ![](res/win.png)
 
-* Download a [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it.<br> ![](res/winjdk.jpg)
+* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it. ![](res/winjdk.jpg)
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
+* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe), rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
 
 ![](res/mac.png)
 
-* Download a [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and install it.
+* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it. ![](res/macjdk.jpg)
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
+* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 <!--
 * Download [sponge](https://github.com/bpshparis/CP2019/blob/master/osxtools/sponge) :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 -->
 
 ![](res/tux.png)
 
-* Download a [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and install it.
+* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it. ![](res/tuxjdk.jpg)
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
+* Get **jq** from your distribution repository or download it from [here](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 
 <br>
 
@@ -319,93 +322,52 @@ Move to our user home directory:
 
 	cd $HOME
 
-Check ibmcloud command is available:
+Check javac command is available:
 
-	ibmcloud -v
-
-Check curl command is available:
-
-	curl -V
+	javac -version
 
 Check jq command is available:
 
 	jq
 
-Check javac command is available:
-
-	java -version
-
-<br>
-
-#### Login to IBM Cloud
-
-:bulb: To avoid being prompt when using ibmcloud command set the following config parameters
-
-	ibmcloud config --check-version false
-	ibmcloud config --usage-stats-collect false
-
-Let's connect:
-:warning: Substitute ${IC_ID} with your IBM Cloud id
-
-	ibmcloud login -u ${IC_ID} --skip-ssl-validation --no-region
-
-> :no_entry: If **login failed** because of logging in with a federated ID, then browse one of the following url:
-
-> :bulb: Ctrl + Click on links below to open them in new tab and keep the tutorial tab opened.
-
- * https://login.ng.bluemix.net/UAALoginServerWAR/passcode
- * https://login.eu-gb.bluemix.net/UAALoginServerWAR/passcode
- * https://login.eu-de.bluemix.net/UAALoginServerWAR/passcode
-
-> and get a one-time passcode.
-
-> Then login with **--sso**,
-
-:warning: Substitute ${IC_ID} with your IBM Cloud id
-
-	ibmcloud login -u ${IC_ID} --sso --no-region
-
-> paste the one-time passcode when prompt
-
-	One Time Code (Get one at https://login.eu-gb.bluemix.net/UAALoginServerWAR/passcode)>
-
-> and hit enter.
-
-:bulb: If prompt to select a region, press enter to skip.
-
-:checkered_flag: Now you should be logged to IBM Cloud.
-
 <br>
 
 #### Get application code
 
-Download code
+![](res/web.png)
 
-	curl -LO  https://github.com/bpshparis/simplon/archive/master.zip
+Browse [github application repository](https://github.com/bpshparis/murex), download code (e.g. **murex-master.zip**)
+![](res/dlcode.jpg)
 
 and unzip it:
 
-	unzip master.zip
+:bulb: Feel free to unzip with any GUI tool but :warning: be sure to unzip in your **home directory**.	
 
-:bulb: If unzip command is not found, feel free to unzip with any GUI tool but be sure to unzip in your **home directory**.	
+:bulb: You should now have a directory called **murex-master** in your **home directory**.
 
 <br>
 
 #### Install WAS Liberty Kernel
 
-	unzip wlp-kernel-19.0.0.2.zip
+Unzip **wlp-kernel-19.0.0.6.zip**
 
-:bulb: If unzip command is not found, feel free to unzip with any GUI tool but be sure to unzip in your **home directory**.
+:bulb: Feel free to unzip with any GUI tool but be sure to unzip in your **home directory**.
 	
 <br>	
 	
 #### Create defaultServer
 
-![](res/win.png)
+![](res/win.png)![](res/cmd.png)
+
+	cd %HOMEPATH%
+
 
 	wlp\bin\server.bat create
 
-![](res/mac.png) ![](res/tux.png)
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
+
+	cd $HOME
+
 
 	wlp/bin/server create
 
@@ -415,7 +377,8 @@ and unzip it:
 
 ![](res/notepad.png)
 	
-Replace **wlp/usr/servers/defaultServer/server.xml** with this section
+Edit **wlp/usr/servers/defaultServer/server.xml** and replace it with this section
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
@@ -432,11 +395,11 @@ Replace **wlp/usr/servers/defaultServer/server.xml** with this section
 ```
 then run
 
-![](res/win.png)
+![](res/win.png)![](res/cmd.png)
 
 	wlp\bin\installUtility.bat install defaultServer
 
-![](res/mac.png) ![](res/tux.png)
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
 
 	wlp/bin/installUtility install defaultServer
 
@@ -452,7 +415,7 @@ Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following con
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
-    <dir sourceOnDisk="%HOMEPATH%/simplon-master/WebContent" targetInArchive="/"/>
+    <dir sourceOnDisk="%HOMEPATH%/murex-master/WebContent" targetInArchive="/"/>
 </archive>
 ```
 :warning: Substitute **%HOMEPATH%** with the **full path** of your home directory. 
@@ -463,40 +426,64 @@ Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following con
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
-    <dir sourceOnDisk="$HOME/simplon-master/WebContent" targetInArchive="/"/>
+    <dir sourceOnDisk="$HOME/murex-master/WebContent" targetInArchive="/"/>
 </archive>
 ```
 :warning: Substitute **$HOME** with the **full path** of your home directory. 
 
 #### Set environment to access Watson service instances in IBM Cloud
 
-Change to code directory
 
-	cd simplon-master
+![](res/notepad.png)
 
-> :information_source: Now if you stand in the correct directory, you should be able to list directories such as **WebContent, src, wlp**. We're going to copy or move **vcap.json** completed earlier and store its content in a **json formatted system environment variable** for our application to read access to our 3 Watson services
+Save **vcap.json** in **murex-master** directory.
 
-First let's format **vcap.json** to fit in one line as required by environment variable syntax
 
-	jq -c . vcap.json > vcap-compact.json
 
-Now create environment variable call VCAP_SERVICES:
+Change to code directory and be sure to stand in the right place
 
-![](res/win.png)
+![](res/win.png)![](res/cmd.png)
 
-	set /P VCAP_SERVICES=< vcap-compact.json
+	cd murex-master
 
-![](res/mac.png) ![](res/tux.png)
 
-	export VCAP_SERVICES=$(cat vcap-compact.json)
+	dir
+
+![](res/mac.png)![](res/tux.png)![](res/term.png)
+
+	cd murex-master
+
+
+	ls -l
+
+
+> :information_source: If you stand in the correct directory, you should be able to list directories such as **WebContent, src, wlp** and your **vcap.json** completed earlier. 
+
+
+
+Now let's format **vcap.json** to fit in one line as required by environment variable syntax and create environment variable call **VCAP_SERVICES**
+
+![](res/win.png)![](res/cmd.png)
+
+	jq -c . vcap.json > vcap.env
+
+
+	set /P VCAP_SERVICES=< vcap.env
+
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
+
+	jq -c . vcap.json > vcap.env
+
+
+	export VCAP_SERVICES=$(cat vcap.env)
 
 :bulb: Check the variable with:	
 
-![](res/win.png)
+![](res/win.png)![](res/cmd.png)
 
 	echo %VCAP_SERVICES%
 
-![](res/mac.png) ![](res/tux.png)
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
 	
 	echo $VCAP_SERVICES
 
@@ -513,14 +500,18 @@ It should display something like:
 
 Come back in your home directory and start WAS Liberty Kernel defaultServer
 
-![](res/win.png)
+![](res/win.png)![](res/cmd.png)
 
 	cd %HOMEPATH%
+
+
 	wlp\bin\server.bat start defaultServer
 
-![](res/mac.png) ![](res/tux.png)
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
 
 	cd $HOME
+
+
 	wlp/bin/server start defaultServer
 
 ![](res/web.png)
