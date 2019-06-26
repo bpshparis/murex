@@ -303,14 +303,14 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ![](res/win.png)
 
-* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: Not **Demos and Samples** :no_entry: and install it. ![](res/winjdk.jpg)
-* Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
+* Download and **install** [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/winjdk.jpg)
+* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) into your **home directory**.
 * Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe), rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
 
 ![](res/mac.png)
 
-* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it. ![](res/macjdk.jpg)
-* Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
+* Download and **install** [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/macjdk.jpg)
+* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) into your **home directory**.
 * Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 <!--
 * Download [sponge](https://github.com/bpshparis/CP2019/blob/master/osxtools/sponge) :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
@@ -318,8 +318,8 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ![](res/tux.png)
 
-* Download [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it. ![](res/tuxjdk.jpg)
-* Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
+* Download and **install** [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/tuxjdk.jpg)
+* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) into your **home directory**.
 * Get **jq** from your distribution repository or download it from [here](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 
 <br>
