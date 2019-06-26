@@ -7,13 +7,13 @@ MailBox Analyzer is an application using [Watson Developer Cloud Java SDK](https
 ## Table of Contents
 
 - [Application Flow](#application-flow)
-
+- [How to read this tutorial](#how-to-read-this-tutorial)
+- [Getting started](#getting-started)
 - [Setup environment in IBM Cloud](#setup-environment-in-ibm-cloud)
   * [Create a credential file](#create-a-credential-file)
   * [Setup Tone Analyzer service](#setup-tone-analyzer-service)
   * [Setup Natural Language Understanding service](#setup-natural-language-understanding-service)
   * [Setup Visual Recognition service](#setup-visual-recognition-service)  
-
 - [Setup application](#setup-application)
   * [Install needed softwares](#install-needed-softwares)
   * [Check everything is installed properly](#check-everything-is-installed-properly)
@@ -39,6 +39,28 @@ MailBox Analyzer is an application using [Watson Developer Cloud Java SDK](https
 ![Flow](images/appFlow.jpg)
 
 <br>
+
+### How to read this tutorial
+
+Steps will be achieved in different ways. Keep in mind that:
+
+- ![](res/web.png) means: use a web browser
+- ![](res/notepad.png) means: use a text editor 
+- ![](res/win.png) means: for Windows platform
+- ![](res/mac.png) means: for MacOSX platform
+- ![](res/tux.png) means: for Linux platform
+- ![](res/cmd.png) means: use a command prompt under Windows platform
+- ![](res/term.png) means: use a shell under MacOSX or Linux platform
+
+### Getting started
+
+![](res/web.png)
+
+If not already done, right+click [IBM Cloud](https://cloud.ibm.com/registration) and register with a **valid email address**
+
+Or right+click [IBM Cloud](https://cloud.ibm.com/login) to login
+
+
 
 ### Setup environment in IBM Cloud
 
@@ -94,11 +116,11 @@ Choose your favorite text editor, create a new file, paste the following content
 }
 ```
 
-, save it as **vcap.json** and :warning: **keep it opened**.
+, save it as **vcap.json** and :warning: **keep it opened** for future use.
 
 <br>
 
-:information_source: Let's create our 3 Watson services
+:information_source: Let's create the 3 Watson services needed
 
 ![](res/web.png)
 
@@ -116,7 +138,15 @@ To instantiate **Tone Analyzer** service click
 
 Wait for followings panels to be available:
 
+> :bulb:
+>
+> 1. Service name can be anything
+> 2. Region could be any region available in the list
+> 3. keep **default** as resource group
+
 ![](guiScreenShots/ta1.jpg)
+
+
 
 ![](guiScreenShots/ta2.jpg)
 
@@ -335,7 +365,7 @@ and unzip it:
 
 #### Install WAS Liberty Kernel
 
-Unzip **wlp-kernel-19.0.0.6.zip**
+Unzip WAS Liberty Kernel product (e.g. **wlp-kernel-19.0.0.6.zip)**
 
 :bulb: Feel free to unzip with any GUI tool but be sure to unzip in your **home directory**.
 	
@@ -393,12 +423,14 @@ to configure defaultServer.
 
 <br>	
 	
+
 #### Add application to defaultServer
 
 ![](res/notepad.png) ![](res/win.png)
 
 Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following content:
 :warning: Substitute **%HOMEPATH%** with the **full path** of your home directory. 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
@@ -509,7 +541,7 @@ When app is loaded:
 
 1. Click on ![](res/compose.png) to compose a mail and when done click ![](res/send.png) to send it to server.
 2. Click on ![](res/envelope.png) to get your mail from server.
-3. Once mails are displayed, click ![](res/cogwheels.png) to send mail for analysis.
+3. Once mail is displayed, click ![](res/cogwheels.png) to send mail for analysis.
 4. When Watson returned, **3 new tabs** (one per service) should appear and are ready to browse. ![](res/watsontabs.png)
 
 <br>
@@ -552,8 +584,6 @@ Open each services **More Actions** popup menu and choose **Delete Service**
 [Documentation](https://console.bluemix.net/docs/services/visual-recognition/getting-started.html)
 [Dashboard](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/dashboard/en/visual-recognition-dashboard.html)
 [Github](https://github.com/watson-developer-cloud)
-[Tool](https://watson-visual-recognition.ng.bluemix.net/)
-
 <br>
 
 <!--
