@@ -338,7 +338,7 @@ Open a command prompt ![](res/cmd.png)
 
 Open a shell ![](res/term.png)
 
-:bulb: **Keep this shell should opened till the end of the tutorial.**
+:bulb: **Keep this shell opened till the end of the tutorial.**
 
 <br>
 
