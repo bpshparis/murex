@@ -309,18 +309,18 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ![](res/mac.png)
 
-* Download and **install** [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/macjdk.jpg)
-* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) into your **home directory**.
-* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
+* Download and **install** [latest JDK 8](https://ibm.ent.box.com/v/murex-festival/file/481752049718) <!--(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/macjdk.jpg) -->
+* Download **only** [WAS Liberty Kernel](https://ibm.ent.box.com/v/murex-festival/file/481751728904) <!--(https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) --> into your **home directory**.
+* Download [jq](https://ibm.ent.box.com/v/murex-festival/file/481750728277) <!--(https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64) -->, rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 <!--
 * Download [sponge](https://github.com/bpshparis/CP2019/blob/master/osxtools/sponge) :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 -->
 
 ![](res/tux.png)
 
-* Download and **install** [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/tuxjdk.jpg)
-* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) into your **home directory**.
-* Get **jq** from your distribution repository or download it from [here](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
+* Download and **install** [latest JDK 8](https://ibm.ent.box.com/v/murex-festival/file/481726007707) <!-- (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/tuxjdk.jpg) -->
+* Download **only** [WAS Liberty Kernel](https://ibm.ent.box.com/v/murex-festival/file/481751728904) <!--(https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel)--> into your **home directory**.
+* Get **jq** from your distribution repository or download it from [here](https://ibm.ent.box.com/v/murex-festival/file/481751501979) <!--(https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64) -->, rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 
 <br>
 
