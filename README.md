@@ -281,17 +281,11 @@ You can check it in your [IBM Cloud Dashboard](https://console.bluemix.net/dashb
 
 ![](res/win.png)
 
-* Download and install [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html)  
-* Download and install [curl](https://curl.haxx.se/windows/)
-* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe), rename it to **jq** and copy it in your **%PATH%** or in **%WINDIR%\system32**.
-* Download a [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and install it.
+* Download a [latest JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install it.<br> ![](res/winjdk.jpg)
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
 
 ![](res/mac.png)
 
-* Download and install [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html)  
-* **curl** should already be installed. If not, get it from [here](https://curl.haxx.se/dlwiz/?type=bin&os=Mac+OS+X&flav=-&ver=-&cpu=i386)
-* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your **$PATH**.
 * Download a [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and install it.
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
 <!--
@@ -300,12 +294,6 @@ You can check it in your [IBM Cloud Dashboard](https://console.bluemix.net/dashb
 
 ![](res/tux.png)
 
-* Download and install [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html)  
-* Get **curl** from your distribution repository or download and install it from [here](https://curl.haxx.se/dlwiz/?type=bin&os=Linux).
-* Get **jq** from your distribution repository or download it from [here](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64), rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your **$PATH**.
-<!--
-* Install **moreutils** package
--->
 * Download a [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and install it.
 * Download [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) to your **home directory**.
 
