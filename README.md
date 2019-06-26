@@ -138,17 +138,13 @@ To instantiate **Tone Analyzer** service click
 
 Wait for followings panels to be available:
 
-> :bulb:
->
-> 1. Service name can be anything
-> 2. Region could be any region available in the list
-> 3. keep **default** as resource group
-
 ![](guiScreenShots/ta1.jpg)
-
-
+> 1. :bulb:Service name can be anything
+> 2. :bulb:Region could be any region available in the list
+> 3. :warning:Keep **default** as resource group
 
 ![](guiScreenShots/ta2.jpg)
+> :warning:Keep **Lite** as Plan
 
 Then hit 
 
@@ -185,8 +181,12 @@ To instanciate **Natural Language Understanding** service, go back to [IBM Cloud
 Wait for followings panels to be available:
 
 ![](guiScreenShots/nlu1.jpg)
+> 1. :bulb:Service name can be anything
+> 2. :bulb:Region could be any region available in the list
+> 3. :warning:Keep **default** as resource group
 
 ![](guiScreenShots/nlu2.jpg)
+> :warning:Keep **Lite** as Plan
 
 Then hit 
 
@@ -223,10 +223,14 @@ To instanciate **Visual Recognition** service, go back to [IBM Cloud Catalog](ht
 Wait for followings panels to be available:
 
 ![](guiScreenShots/wvc1.jpg)
+> 1. :bulb:Service name can be anything
+> 2. :bulb:Region could be any region available in the list
+> 3. :warning:Keep **default** as resource group
 
 ![](guiScreenShots/wvc2.jpg)
 
 Then hit 
+> :warning:Keep **Lite** as Plan
 
 ![](guiScreenShots/wvc3.jpg)
 
