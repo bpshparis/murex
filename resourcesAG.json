@@ -1,0 +1,65 @@
+{
+  "9a1c9a50-9561-4d66-a548-e419d55c7046": {
+    "credentials": [
+      {
+        "id": "f59ef98e-c354-4533-9f31-3c6ba21d0947",
+        "name": "Auto-generated service credentials",
+        "apikey": "FRpm6VvQf8dhnFfO3SDaYcnIyFRKDAU597zXns2vKP4R",
+        "url": "https://gateway.watsonplatform.net/assistant/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "conversation",
+    "region": "us-south",
+    "instance": "Watson Assistant-h9"
+  },
+  "eb570653-8aa9-448a-8f19-564ff408bdc9": {
+    "credentials": [
+      {
+        "id": "c941e37d-8671-4c4f-b4cf-566505e27f0f",
+        "name": "Auto-generated service credentials",
+        "apikey": "72tyv9fYBE_h7_WwiZ4Xv_FCH5hvr8gxp2dVxjLu8DkX",
+        "url": "https://gateway-fra.watsonplatform.net/tone-analyzer/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "tone-analyzer",
+    "region": "eu-de",
+    "instance": "Tone Analyzer-vv"
+  },
+  "996537c6-9620-4c9c-a26f-8c2937bb3174": {
+    "credentials": [
+      {
+        "id": "600b8418-391c-467c-b13a-3f0e1b2441b4",
+        "name": "Auto-generated service credentials",
+        "apikey": "ObmEOhXKCy_X8kS0Nj7PqWpv0WW_Gc9RPzansRIbNEiQ",
+        "url": "https://gateway-lon.watsonplatform.net/natural-language-understanding/api",
+        "role": "Manager"
+      },
+      {
+        "id": "bd384954-135a-47b4-a437-51c64391e464",
+        "name": "Auto-generated service credentials",
+        "apikey": "uBEIHFiRrRs62McRr3AV5FQY4aLZAK2hIE6FkSrAAC1j",
+        "url": "https://gateway-lon.watsonplatform.net/natural-language-understanding/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "natural-language-understanding",
+    "region": "eu-gb",
+    "instance": "Natural Language Understanding-9g"
+  },
+  "6f171c09-ce25-4f1a-ab91-18250ca3659f": {
+    "credentials": [
+      {
+        "id": "a6817c3a-ee78-4a5a-9216-1557579c51a4",
+        "name": "Auto-generated service credentials",
+        "apikey": "mrEOcI7oKKWMVu5pRAqp3LVm60aCnVyN3TdAwFv9QMaE",
+        "url": "https://gateway.watsonplatform.net/visual-recognition/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "watson-vision-combined",
+    "region": "us-south",
+    "instance": "Visual Recognition-y3"
+  }
+}

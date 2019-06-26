@@ -1,0 +1,20 @@
+{
+  "7fabd9f2-fa16-4e32-aba9-0fbc2f98212c": {
+    "credentials": null,
+    "service": "tone-analyzer",
+    "region": "eu-de",
+    "instance": "ta"
+  },
+  "16b3eff8-a6f5-41d4-bb57-96355f00619e": {
+    "credentials": null,
+    "service": "natural-language-understanding",
+    "region": "eu-de",
+    "instance": "nlu"
+  },
+  "3248a39d-ffb4-4e7c-a884-05a317d31835": {
+    "credentials": null,
+    "service": "watson-vision-combined",
+    "region": "us-south",
+    "instance": "Visual Recognition-cv"
+  }
+}

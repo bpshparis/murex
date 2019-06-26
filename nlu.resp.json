@@ -1,0 +1,29 @@
+{
+  "usage": {
+    "text_units": 1,
+    "text_characters": 106,
+    "features": 3
+  },
+  "sentiment": {
+    "document": {
+      "score": -0.925395,
+      "label": "negative"
+    }
+  },
+  "language": "fr",
+  "keywords": [
+    {
+      "text": "jours",
+      "relevance": 0.5,
+      "count": 1
+    }
+  ],
+  "entities": [
+    {
+      "type": "Duration",
+      "text": "15 jours",
+      "relevance": 0.978347,
+      "count": 1
+    }
+  ]
+}

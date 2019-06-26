@@ -1,0 +1,78 @@
+{
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classifier_id": "default",
+                    "name": "default",
+                    "classes": [
+                        {
+                            "class": "Tidal Basin",
+                            "score": 0.597,
+                            "type_hierarchy": "/nature/Tidal Basin"
+                        },
+                        {
+                            "class": "nature",
+                            "score": 0.812
+                        },
+                        {
+                            "class": "littoral maritime",
+                            "score": 0.652,
+                            "type_hierarchy": "/nature/rivage/littoral maritime"
+                        },
+                        {
+                            "class": "rivage",
+                            "score": 0.693
+                        },
+                        {
+                            "class": "littoral (plages de sable)",
+                            "score": 0.546,
+                            "type_hierarchy": "/nature/rivage/littoral maritime/littoral (plages de sable)"
+                        },
+                        {
+                            "class": "embarcation",
+                            "score": 0.529,
+                            "type_hierarchy": "/véhicule/embarcation"
+                        },
+                        {
+                            "class": "véhicule",
+                            "score": 0.529
+                        },
+                        {
+                            "class": "limite (côtière) des 3 milles",
+                            "score": 0.5,
+                            "type_hierarchy": "/nature/limite (côtière) des 3 milles"
+                        },
+                        {
+                            "class": "bord de l'eau",
+                            "score": 0.5
+                        },
+                        {
+                            "class": "piste",
+                            "score": 0.799
+                        },
+                        {
+                            "class": "élévation naturelle",
+                            "score": 0.797
+                        },
+                        {
+                            "class": "bateau",
+                            "score": 0.791
+                        },
+                        {
+                            "class": "couleur bleu",
+                            "score": 0.837
+                        },
+                        {
+                            "class": "couleur gris",
+                            "score": 0.769
+                        }
+                    ]
+                }
+            ],
+            "image": "image1.jpg"
+        }
+    ],
+    "images_processed": 1,
+    "custom_classes": 0
+}

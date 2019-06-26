@@ -1,0 +1,50 @@
+{
+  "b75d0d61-360f-42f3-baa5-953c936110ac": {
+    "credentials": null,
+    "service": "tone-analyzer",
+    "region": "us-south",
+    "instance": "Tone Analyzer-fs"
+  },
+  "771408bb-d479-409d-90cf-762bac34bd47": {
+    "credentials": null,
+    "service": "natural-language-understanding",
+    "region": "us-south",
+    "instance": "Natural Language Understanding-qf"
+  },
+  "40d26948-5fc4-4a59-828e-e44d211cce3e": {
+    "credentials": null,
+    "service": "watson-vision-combined",
+    "region": "us-south",
+    "instance": "Visual Recognition-gd"
+  },
+  "9a1c9a50-9561-4d66-a548-e419d55c7046": {
+    "credentials": null,
+    "service": "conversation",
+    "region": "us-south",
+    "instance": "Watson Assistant-h9"
+  },
+  "de4ff3a2-ce78-4b22-b334-4d26fae2951a": {
+    "credentials": null,
+    "service": "speech-to-text",
+    "region": "us-south",
+    "instance": "Speech to Text-92"
+  },
+  "7ff6c8a1-2f20-4033-9439-8c1f007ed6b5": {
+    "credentials": null,
+    "service": "data-science-experience",
+    "region": "us-south",
+    "instance": "Watson Studio-pd"
+  },
+  "052a0b7a-b6af-4cd3-a677-f3732ad094bd": {
+    "credentials": null,
+    "service": "cloud-object-storage",
+    "region": "global",
+    "instance": "cloud-object-storage-xd"
+  },
+  "176b3ef5-e753-4fe9-931b-47ff1207df6a": {
+    "credentials": null,
+    "service": "cloudantnosqldb",
+    "region": "us-south",
+    "instance": "Cloudant-a1"
+  }
+}

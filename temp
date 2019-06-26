@@ -1,0 +1,90 @@
+{
+  "b75d0d61-360f-42f3-baa5-953c936110ac": {
+    "credentials": [
+      {
+        "id": "2f8a81c0-8eaf-4913-9983-58de02398f2a",
+        "name": "Auto-generated service credentials",
+        "apikey": "4Pe0RUDXt_1EBsrWk60PxbrxY7u-Zc1dRcbD_8n6jQet",
+        "url": "https://gateway.watsonplatform.net/tone-analyzer/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "tone-analyzer",
+    "region": "us-south",
+    "instance": "Tone Analyzer-fs"
+  },
+  "771408bb-d479-409d-90cf-762bac34bd47": {
+    "credentials": [
+      {
+        "id": "3a194377-2ec8-4a5e-b6a8-a57c551af48b",
+        "name": "Auto-generated service credentials",
+        "apikey": "210l8T-InTbjpyFG7BUoonNTGjVRAgdFUsyPXPfITNnk",
+        "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "natural-language-understanding",
+    "region": "us-south",
+    "instance": "Natural Language Understanding-qf"
+  },
+  "40d26948-5fc4-4a59-828e-e44d211cce3e": {
+    "credentials": [
+      {
+        "id": "e8357b44-ca94-403f-9e6d-bc0b5b44af26",
+        "name": "Auto-generated service credentials",
+        "apikey": "M6WC_MW-SRs_sppmIk0yIkiYLwCPF-JwardYBjzpn5Oh",
+        "url": "https://gateway.watsonplatform.net/visual-recognition/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "watson-vision-combined",
+    "region": "us-south",
+    "instance": "Visual Recognition-gd"
+  },
+  "9a1c9a50-9561-4d66-a548-e419d55c7046": {
+    "credentials": [
+      {
+        "id": "f59ef98e-c354-4533-9f31-3c6ba21d0947",
+        "name": "Auto-generated service credentials",
+        "apikey": "FRpm6VvQf8dhnFfO3SDaYcnIyFRKDAU597zXns2vKP4R",
+        "url": "https://gateway.watsonplatform.net/assistant/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "conversation",
+    "region": "us-south",
+    "instance": "Watson Assistant-h9"
+  },
+  "de4ff3a2-ce78-4b22-b334-4d26fae2951a": {
+    "credentials": [
+      {
+        "id": "c268e8fe-60c0-48e0-a6f0-d54543a967d9",
+        "name": "Auto-generated service credentials",
+        "apikey": "p8AoIWeoCRnxau-OWYR38_JYXjQ6ZniQp9xil55jQS_M",
+        "url": "https://stream.watsonplatform.net/speech-to-text/api",
+        "role": "Manager"
+      }
+    ],
+    "service": "speech-to-text",
+    "region": "us-south",
+    "instance": "Speech to Text-92"
+  },
+  "7ff6c8a1-2f20-4033-9439-8c1f007ed6b5": {
+    "credentials": null,
+    "service": "data-science-experience",
+    "region": "us-south",
+    "instance": "Watson Studio-pd"
+  },
+  "052a0b7a-b6af-4cd3-a677-f3732ad094bd": {
+    "credentials": null,
+    "service": "cloud-object-storage",
+    "region": "global",
+    "instance": "cloud-object-storage-xd"
+  },
+  "176b3ef5-e753-4fe9-931b-47ff1207df6a": {
+    "credentials": null,
+    "service": "cloudantnosqldb",
+    "region": "us-south",
+    "instance": "Cloudant-a1"
+  }
+}
