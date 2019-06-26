@@ -252,8 +252,7 @@ Copy **API Key:** and paste it in place of **$(WVC_APIKEY)** in **vcap.json**
 
 Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
-> :checkered_flag: You are done with environment setup. Now at least three Watson services should be created.
-You can check it in your [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps).
+> :checkered_flag: You are done with environment setup. Now at least three Watson services should be created. You can check it in your [IBM Cloud Resource list](https://cloud.ibm.com/resources).
 
 <br>
 
@@ -371,7 +370,7 @@ and unzip it:
 
 Unzip WAS Liberty Kernel product (e.g. **wlp-kernel-19.0.0.6.zip)**
 
-:bulb: Feel free to unzip with any GUI tool but be sure to unzip in your **home directory**.
+:bulb: Feel free to unzip with any GUI tool but :warning: be sure to unzip in your **home directory**.
 	
 <br>	
 
