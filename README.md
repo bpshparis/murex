@@ -438,15 +438,27 @@ then run
 
 to configure defaultServer.
 
-<br>	
+<br>
 	
 
 #### Add application to defaultServer
 
+First thing is to get your full path home directory
+
+ ![](res/win.png)![](res/cmd.png)
+
+	echo %HOMEPATH%
+
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
+
+	echo $HOME
+
+then create
+
 ![](res/notepad.png) ![](res/win.png)
 
-Create **wlp\usr\servers\defaultServer\apps\app.war.xml** with the following content:
-:warning: Substitute **%HOMEPATH%** with the **full path** of your home directory. 
+**wlp\usr\servers\defaultServer\apps\app.war.xml** with the following content:
+:warning: Substitute **%HOMEPATH%** with the **full path** of your home directory (e.g. **/Users/administrator**).
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -457,8 +469,9 @@ Create **wlp\usr\servers\defaultServer\apps\app.war.xml** with the following con
 
 ![](res/notepad.png) ![](res/mac.png) ![](res/tux.png)
 
-Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following content:
-:warning: Substitute **$HOME** with the **full path** of your home directory. 
+**wlp/usr/servers/defaultServer/apps/app.war.xml** with the following content:
+:warning: Substitute **$HOME** with the **full path** of your home directory (e.g. **/home/admin**). 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
