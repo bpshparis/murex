@@ -445,7 +445,7 @@ to configure defaultServer.
 
 ![](res/notepad.png) ![](res/win.png)
 
-Create **wlp/usr/servers/defaultServer/apps/app.war.xml** with the following content:
+Create **wlp\usr\servers\defaultServer\apps\app.war.xml** with the following content:
 :warning: Substitute **%HOMEPATH%** with the **full path** of your home directory. 
 
 ```
