@@ -70,6 +70,10 @@ public class DeleteMailsServlet extends HttpServlet {
 					mailsPath.toFile().setReadable(true);
 					datas.put("STATUS", "OK");
 					datas.put("MAILCOUNT", 0);
+					@SuppressWarnings("unchecked")
+					Map<String, Object> init = (Map<String, Object>) request.getServletContext().getAttribute("init");
+					init.put("MAILCOUNT", 0);
+					request.getServletContext().setAttribute("init", init);
 				}
 			}
 			
