@@ -90,7 +90,13 @@ public class SendMailServlet extends HttpServlet {
 					FileUtils.deleteDirectory(mailIdPath.toFile());
 				}
 				if(mailIdPath.toFile().mkdir()) {
-					Files.setPosixFilePermissions(mailIdPath, perms);
+//					Files.setPosixFilePermissions(mailIdPath, perms);
+					mailIdPath.toFile().setExecutable(true);
+					mailIdPath.toFile().setWritable(true);
+					mailIdPath.toFile().setReadable(true);
+					
+					
+
 					Mail mail = new Mail();
 					mail.setId(mailId);
 					for (FileItem item : items) {
@@ -101,7 +107,8 @@ public class SendMailServlet extends HttpServlet {
 									
 									Path imageFile = Paths.get(mailIdPath + "/" + item.getName());
 									Files.copy(new BufferedInputStream(item.getInputStream()), imageFile, StandardCopyOption.REPLACE_EXISTING);
-									Files.setPosixFilePermissions(imageFile, perms);
+//									Files.setPosixFilePermissions(imageFile, perms);
+									imageFile.toFile().setReadable(true);
 									datas.put("IMAGE", "OK: save in " +  imageFile);
 									mail.setPicture(String.valueOf(mailId) + "/attachedImage.jpg");
 		
@@ -110,7 +117,8 @@ public class SendMailServlet extends HttpServlet {
 									
 									Path faceFile = Paths.get(mailIdPath + "/" + item.getName());
 									Files.copy(new BufferedInputStream(item.getInputStream()), faceFile, StandardCopyOption.REPLACE_EXISTING);								
-									Files.setPosixFilePermissions(faceFile, perms);
+//									Files.setPosixFilePermissions(faceFile, perms);
+									faceFile.toFile().setReadable(true);
 									datas.put("FACE", "OK: save in " +  faceFile);
 									mail.setFace(String.valueOf(mailId) + "/attachedFace.jpg");
 		
@@ -134,7 +142,9 @@ public class SendMailServlet extends HttpServlet {
 					}
 					mails.add(mail);
 					Files.write(mailsFile, Tools.toJSON(mails).getBytes());
-					Files.setPosixFilePermissions(mailsFile, perms);
+//					Files.setPosixFilePermissions(mailsFile, perms);
+					mailsFile.toFile().setReadable(true);
+					mailsFile.toFile().setWritable(true);
 
 					
 				}
