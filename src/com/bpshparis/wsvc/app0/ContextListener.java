@@ -7,12 +7,15 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletContextEvent;
@@ -22,7 +25,6 @@ import javax.servlet.annotation.WebListener;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer;
@@ -73,6 +75,26 @@ public class ContextListener implements ServletContextListener {
     				InputStream is = new ByteArrayInputStream(Files.readAllBytes(mailsFile));
     				mails = Tools.MailsListFromJSON(is);
     			}
+
+    			Set<PosixFilePermission> perms = new HashSet<>();
+    		    perms.add(PosixFilePermission.OWNER_READ);
+    		    perms.add(PosixFilePermission.OWNER_WRITE);
+    		    perms.add(PosixFilePermission.OWNER_EXECUTE);
+    	
+    		    perms.add(PosixFilePermission.OTHERS_READ);
+    		    perms.add(PosixFilePermission.OTHERS_WRITE);
+    		    perms.add(PosixFilePermission.OTHERS_EXECUTE);
+    	
+    		    perms.add(PosixFilePermission.GROUP_READ);
+    		    perms.add(PosixFilePermission.GROUP_WRITE);
+    		    perms.add(PosixFilePermission.GROUP_EXECUTE);	
+    			    			
+    			Path mailsPath = Paths.get(realPath + "/res/mails");
+    			if(!Files.exists(mailsPath)){
+    				if(mailsPath.toFile().mkdir()) {
+    					Files.setPosixFilePermissions(mailsPath, perms);
+    				}
+				}    				
 
     			int mailCount = mails.size();
     			init.put("MAILCOUNT", mailCount);
