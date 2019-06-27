@@ -17,7 +17,6 @@ MailBox Analyzer is an application using [Watson Developer Cloud Java SDK](https
 - [Setup application](#setup-application)
   * [Install needed softwares](#install-needed-softwares)
   * [Check everything is installed properly](#check-everything-is-installed-properly)
-  * [Login to IBM Cloud](#login-to-ibm-cloud)
  * [Get application code](#get-application-code)  
   * [Install WAS Liberty Kernel](#install-was-liberty-kernel)
   * [Create defaultServer](#create-defaultserver)
@@ -297,6 +296,20 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ### Setup application
 
+:warning: To avoid permissions issue you are going to install, setup and execute most of software in your home directory. Get your full path home directory with:
+
+![](res/win.png)![](res/cmd.png)
+
+	echo %HOMEPATH%
+
+:bulb: Should return something like **\Users\administrator**.
+
+![](res/mac.png) ![](res/tux.png)![](res/term.png)
+
+	echo $HOME
+
+:bulb: Should return something like **/home/admin**.
+
 #### Install needed softwares
 
 > :bulb: Ctrl + Click on links below to open them in new tab and keep the tutorial tab opened.
@@ -445,7 +458,7 @@ to configure defaultServer.
 
 First thing is to get your full path home directory
 
- ![](res/win.png)![](res/cmd.png)
+![](res/win.png)![](res/cmd.png)
 
 	echo %HOMEPATH%
 
@@ -458,7 +471,9 @@ then create
 ![](res/notepad.png) ![](res/win.png)
 
 **wlp\usr\servers\defaultServer\apps\app.war.xml** with the following content:
-:warning: Substitute **%HOMEPATH%** with the **full path** of your home directory (e.g. **/Users/administrator**).
+:warning: Substitute **%HOMEPATH%** with the **full path** of your home directory (e.g. **\Users\administrator**).
+
+:warning: Backslash should be change to slash (e.g. \Users\administrator will become **/Users/administrator**)
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>

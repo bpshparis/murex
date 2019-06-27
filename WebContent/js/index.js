@@ -895,10 +895,14 @@ function AnalyzeMails(){
 
     success: function(data) {
 			console.log(data);
-      if(data.STATUS == "KO" && data.MESSAGE == "Init KO"){
+      if(data.MESSAGE == "Init KO"){
         if(data.INIT.STATUS == 'KO'){
           ShowAlert(data.INIT.MSG, data.INIT.RESULT + '<br>' + data.INIT.TROUBLESHOOTING, "alert-danger", "bottom");
         }
+        return;
+      }
+      if(data.STATUS == "KO"){
+        ShowAlert(data.STATUS, data.EXCEPTION + '<br>' + data.MESSAGE, "alert-danger", "bottom");
         return;
       }
 			if (data.MAILS == 0) {
