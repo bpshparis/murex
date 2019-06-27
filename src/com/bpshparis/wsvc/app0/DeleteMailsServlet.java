@@ -64,7 +64,10 @@ public class DeleteMailsServlet extends HttpServlet {
 			if(Files.exists(mailsPath)){
 				FileUtils.deleteDirectory(mailsPath.toFile());
 				if(mailsPath.toFile().mkdir()) {
-					Files.setPosixFilePermissions(mailsPath, perms);
+//					Files.setPosixFilePermissions(mailsPath, perms);
+					mailsPath.toFile().setExecutable(true);
+					mailsPath.toFile().setWritable(true);
+					mailsPath.toFile().setReadable(true);
 					datas.put("STATUS", "OK");
 					datas.put("MAILCOUNT", 0);
 				}

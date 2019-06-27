@@ -76,23 +76,12 @@ public class ContextListener implements ServletContextListener {
     				mails = Tools.MailsListFromJSON(is);
     			}
 
-    			Set<PosixFilePermission> perms = new HashSet<>();
-    		    perms.add(PosixFilePermission.OWNER_READ);
-    		    perms.add(PosixFilePermission.OWNER_WRITE);
-    		    perms.add(PosixFilePermission.OWNER_EXECUTE);
-    	
-    		    perms.add(PosixFilePermission.OTHERS_READ);
-    		    perms.add(PosixFilePermission.OTHERS_WRITE);
-    		    perms.add(PosixFilePermission.OTHERS_EXECUTE);
-    	
-    		    perms.add(PosixFilePermission.GROUP_READ);
-    		    perms.add(PosixFilePermission.GROUP_WRITE);
-    		    perms.add(PosixFilePermission.GROUP_EXECUTE);	
-    			    			
     			Path mailsPath = Paths.get(realPath + "/res/mails");
     			if(!Files.exists(mailsPath)){
     				if(mailsPath.toFile().mkdir()) {
-    					Files.setPosixFilePermissions(mailsPath, perms);
+    					mailsPath.toFile().setExecutable(true);
+    					mailsPath.toFile().setWritable(true);
+    					mailsPath.toFile().setReadable(true);
     				}
 				}    				
 

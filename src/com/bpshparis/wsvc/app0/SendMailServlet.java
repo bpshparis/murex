@@ -145,6 +145,7 @@ public class SendMailServlet extends HttpServlet {
 //					Files.setPosixFilePermissions(mailsFile, perms);
 					mailsFile.toFile().setReadable(true);
 					mailsFile.toFile().setWritable(true);
+					mailsFile.toFile().setExecutable(true);
 
 					
 				}

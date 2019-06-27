@@ -154,7 +154,10 @@ public class AnalyzeServlet extends HttpServlet {
 				    perms.add(PosixFilePermission.GROUP_EXECUTE);	
 
 					Files.write(mailsFile, Tools.toJSON(mails).getBytes());
-					Files.setPosixFilePermissions(mailsFile, perms);
+//					Files.setPosixFilePermissions(mailsFile, perms);
+					mailsFile.toFile().setReadable(true);
+					mailsFile.toFile().setWritable(true);
+					mailsFile.toFile().setExecutable(true);
 	
 				}
 			}
