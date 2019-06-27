@@ -779,8 +779,12 @@ sendMail.addEventListener(
     var fd = new FormData();
 
     fd.append('text', JSON.stringify(text));
-    fd.append('attachedImage', attachedImage, 'attachedImage.jpg');
-    fd.append('attachedFace', attachedFace, 'attachedFace.jpg');
+    if(attachedImage instanceof Blob){
+      fd.append('attachedImage', attachedImage, 'attachedImage.jpg');
+    }
+    if(attachedFace instanceof Blob){
+      fd.append('attachedFace', attachedFace, 'attachedFace.jpg');
+    }
 
     $.ajax({
       url: "SendMail",
