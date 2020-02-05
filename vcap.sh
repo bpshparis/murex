@@ -4,14 +4,15 @@ output=vcap.json
 
 echo '{}' | tee $output
 
-services=$(ibmcloud service list | awk 'NR>6 {print "{\""$2"\":[{\"credentials\":null,\"name\":\""$1"\"}]}"}')
+services=$(ibmcloud resource service-instances | awk 'NR>3 {print "{\""$2"\":[{\"credentials\":null,\"name\":\""$1"\"}]}"}')
 
 for service in $(echo $services)
 	do 
 		jq --argjson value $service '. += $value' $output | sponge $output; 
 	done
 
-for svc in $(ibmcloud service list | awk 'NR>6 {print $1 ":" $2}')
+
+for svc in $(ibmcloud resource service-instances | awk 'NR>3 {print $1 ":" $2}')
 	do
 		echo $svc;
 		label=$(echo $svc | cut -d':' -f2);

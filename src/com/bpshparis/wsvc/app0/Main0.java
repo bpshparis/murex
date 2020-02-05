@@ -1,63 +1,40 @@
 package com.bpshparis.wsvc.app0;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.watson.developer_cloud.service.security.IamOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import com.ibm.cloud.sdk.core.security.Authenticator;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
+import com.ibm.watson.visual_recognition.v3.VisualRecognition;
+import com.ibm.watson.visual_recognition.v3.model.ClassifiedImages;
+import com.ibm.watson.visual_recognition.v3.model.ClassifyOptions;
 
 public class Main0 {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException, KeyManagementException {
 		// TODO Auto-generated method stub
 		
-		@SuppressWarnings("unused")
-		String version = "2018-03-19";
+//		String version = "2018-03-19";
 //		String password = "iL7mtf3ebj1DI7-DPFYZ6CXaWcq726dINi68Dw8JUz1o";
 //		String password = "oaKhuzPMVbhZuKv6IQx5ZHliR27SM0kI1bec7SCK1kVB";
-		String username = "apikey";
+//		String username = "apikey";
 //		String password = "YydUT91iEMdi7hQ8I5EVpWt8sMrwhAbMGJfvihTWITAq";
 //		String password = "c837b42bc182da29aa29e2647752f88492089ea2";
 //		String password = "7d613e84233863ce7f62a3a38b14b9653e9c6e34";
 //		String password = "aOLM2E2fo5_na5E3SVh_v9s4tpeJebItmp8vnX4U9A4H";
 //		String password = "fP1J2DKzexDK4pFB7ByaXcBZ9nhKTTSrATD9Aqu6X2Mg";
 //		String password = "0qegHj7E4KQFokkUGA_0Y0oNrXeT3W4TFr6MCoB_EbMe";
-		String password = "3_QCFqpyW6ZcSmnpbY3uRqBIC6KgxxTYGhxPIR1kZKeX";
+//		String password = "3_QCFqpyW6ZcSmnpbY3uRqBIC6KgxxTYGhxPIR1kZKeX";
 //		String url = "http://172.16.186.244/dma/TestDBConnection";
 //		String url = "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19";
 //		String url = "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?version=2018-03-19";
 //		String url = "https://gateway-a.watsonplatform.net/visual-recognition/api";
-		String url = "https://gateway.watsonplatform.net/visual-recognition/api";
-		@SuppressWarnings("unused")
+//		String url = "https://gateway.watsonplatform.net/visual-recognition/api";
 //		String query = "/visual-recognition/api/v3/classify?version=2018-03-19";
-		Path path = Paths.get("/opt/wks/ma/WebContent/res/mails/pic0.jpg");
+//		Path path = Paths.get("/opt/wks/ma/WebContent/res/mails/pic0.jpg");
 		
 //	    OkHttpClient client = new UnsafeOkHttpClient().getUnsafeOkHttpClient();
 //	    
@@ -112,22 +89,25 @@ public class Main0 {
 //			
 //		}	    
 		    
-			IamOptions options = new IamOptions.Builder()
-					.apiKey(password)
-					.build();
-			
-			VisualRecognition wvc = new VisualRecognition(version, options);			
-			
-			ClassifyOptions classifyImagesOptions = new ClassifyOptions.Builder()
-					.imagesFile(Files.newInputStream(path))
-					.imagesFilename("pic0.jpg")
-					.build();
-			
-			ClassifiedImages visualClassification = wvc.classify(classifyImagesOptions).execute();
-			
-			String result = visualClassification.toString();
-			
-			System.out.println(result);
+		@SuppressWarnings("unused")
+
+		String version = "2018-03-19";
+//		String username = "apikey";
+		String password = "3_QCFqpyW6ZcSmnpbY3uRqBIC6KgxxTYGhxPIR1kZKeX";
+		String url = "https://gateway.watsonplatform.net/visual-recognition/api";
+		Path path = Paths.get("/home/fr054721/slcdw/image0.jpg");
+		
+		Authenticator authenticator = new IamAuthenticator(password);
+		com.ibm.watson.visual_recognition.v3.VisualRecognition service = new VisualRecognition(version, authenticator);
+		service.setServiceUrl(url);
+
+		System.out.println("Classify an image");
+		ClassifyOptions options = new ClassifyOptions.Builder()
+		  .imagesFile(path.toFile()) // replace with path to file
+		  .build();
+		ClassifiedImages result = service.classify(options).execute().getResult();
+		System.out.println(result);
+		
 		
 	}
 

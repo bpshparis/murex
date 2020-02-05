@@ -9,6 +9,6 @@ fi
 
 rm -rf WebContent/WEB-INF/classes/*.class
 
-javac -cp wlp/*:WebContent/WEB-INF/lib/* -d WebContent/WEB-INF/classes/ src/com/bpshparis/wsvc/app0/*.java
+javac -encoding ISO-8859-1 -cp wlp/*:WebContent/WEB-INF/lib/* -d WebContent/WEB-INF/classes/ src/com/bpshparis/wsvc/app0/*.java
 
 exit 0

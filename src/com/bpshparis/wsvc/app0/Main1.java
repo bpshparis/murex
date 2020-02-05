@@ -2,16 +2,12 @@ package com.bpshparis.wsvc.app0;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +19,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.SentimentOptions;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneAnalysis;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneOptions;
 
 public class Main1 {
 

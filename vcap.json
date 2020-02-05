@@ -1,0 +1,58 @@
+{
+  "3d64678f-3556-437a-9b81-fab9c55d2106": {
+    "credentials": [
+      {
+        "id": "resource-key",
+        "name": "waKey",
+        "apikey": "faGuJhhs0jG-7G8sh5w31tVAORwbnxM6Lck4zw_41GW1",
+        "url": "https://api.eu-de.assistant.watson.cloud.ibm.com/instances/3d64678f-3556-437a-9b81-fab9c55d2106",
+        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+      }
+    ],
+    "service": "conversation",
+    "region": "eu-de",
+    "instance": "wa0"
+  },
+  "6c7aaa0b-c109-48ae-8d6f-f29bccc192e1": {
+    "credentials": [
+      {
+        "id": "resource-key",
+        "name": "taKey",
+        "apikey": "PD_HgnUPZoU-Z7LyW1SuHRp240vnpE_AhRtNFuLuxVEK",
+        "url": "https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/6c7aaa0b-c109-48ae-8d6f-f29bccc192e1",
+        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+      }
+    ],
+    "service": "tone-analyzer",
+    "region": "eu-de",
+    "instance": "ta"
+  },
+  "dbf2141d-cf8b-4fe6-b860-37da373164d3": {
+    "credentials": [
+      {
+        "id": "resource-key",
+        "name": "nluKey",
+        "apikey": "0otCa3OGloEYgG3RN1RddX8go0ayXXv8nklwEPECX3Ei",
+        "url": "https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com/instances/dbf2141d-cf8b-4fe6-b860-37da373164d3",
+        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+      }
+    ],
+    "service": "natural-language-understanding",
+    "region": "eu-de",
+    "instance": "nlu"
+  },
+  "0cd87b6a-203e-47f0-bd1b-09001c359c8e": {
+    "credentials": [
+      {
+        "id": "resource-key",
+        "name": "wvcKey",
+        "apikey": "6hERFtFs1-hoJ9HADO8E_e18VqI6B-XKacx-6L4SIrGj",
+        "url": "https://api.us-south.visual-recognition.watson.cloud.ibm.com/instances/0cd87b6a-203e-47f0-bd1b-09001c359c8e",
+        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+      }
+    ],
+    "service": "watson-vision-combined",
+    "region": "us-south",
+    "instance": "wvc"
+  }
+}

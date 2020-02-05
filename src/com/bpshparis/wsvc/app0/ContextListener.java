@@ -22,10 +22,11 @@ import javax.servlet.annotation.WebListener;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
-import com.ibm.watson.developer_cloud.service.security.IamOptions;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
+import com.ibm.cloud.sdk.core.security.Authenticator;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
+import com.ibm.watson.natural_language_understanding.v1.NaturalLanguageUnderstanding;
+import com.ibm.watson.tone_analyzer.v3.ToneAnalyzer;
+import com.ibm.watson.visual_recognition.v3.VisualRecognition;
 
 /**
  * Application Lifecycle Listener implementation class ContextListener
@@ -169,7 +170,7 @@ public class ContextListener implements ServletContextListener {
     	String serviceName = props.getProperty("NLU_NAME");
     	
 		String url = "";
-		String username = "apikey";
+//		String username = "apikey";
 		String password = "";
 		String version = props.getProperty("NLU_METHOD").split("=")[1];
 		
@@ -180,10 +181,11 @@ public class ContextListener implements ServletContextListener {
 			}
 		}
 		
-		nlu = new NaturalLanguageUnderstanding(version, username, password);
-		nlu.setEndPoint(url);
+		Authenticator authenticator = new IamAuthenticator(password);
+		nlu = new NaturalLanguageUnderstanding(version, authenticator);
+		nlu.setServiceUrl(url);
 		
-		System.out.println(nlu.getName() + " " + nlu.getEndPoint());
+		System.out.println(nlu.getName() + " " + nlu.getServiceUrl());
 		
 		return;
     }
@@ -193,7 +195,7 @@ public class ContextListener implements ServletContextListener {
     	String serviceName = props.getProperty("TA_NAME");
     	
 		String url = "";
-		String username = "apikey";
+//		String username = "apikey";
 		String password = "";
 		String version = props.getProperty("TA_METHOD").split("=")[1];
 		
@@ -206,10 +208,12 @@ public class ContextListener implements ServletContextListener {
 		
 		try {
 		
-			ta = new ToneAnalyzer(version, username, password);
-			ta.setEndPoint(url);
 			
-			System.out.println(ta.getName() + " " + ta.getEndPoint());
+			Authenticator authenticator = new IamAuthenticator(password);
+			ta = new ToneAnalyzer(version, authenticator);
+			ta.setServiceUrl(url);
+			
+			System.out.println(ta.getName() + " " + ta.getServiceUrl());
 			
 		}
 		catch(Exception e) {
@@ -235,13 +239,11 @@ public class ContextListener implements ServletContextListener {
 			}
 		}
     	
-		IamOptions options = new IamOptions.Builder()
-				.apiKey(password)
-				.build();
-
-		wvc = new VisualRecognition(version, options);
+		Authenticator authenticator = new IamAuthenticator(password);
+		VisualRecognition service = new VisualRecognition(version, authenticator);
+		service.setServiceUrl(url);
 		
-		System.out.println(wvc.getName() + " " + wvc.getEndPoint());
+		System.out.println(wvc.getName() + " " + wvc.getServiceUrl());
 		
 		return;    	
 

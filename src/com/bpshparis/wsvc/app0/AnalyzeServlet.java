@@ -31,21 +31,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalyzeOptions;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.CategoriesOptions;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.EntitiesOptions;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Features;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.KeywordsOptions;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneAnalysis;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.DetectFacesOptions;
-import com.ibm.watson.developer_cloud.visual_recognition.v3.model.DetectedFaces;
+import com.ibm.watson.natural_language_understanding.v1.NaturalLanguageUnderstanding;
+import com.ibm.watson.natural_language_understanding.v1.model.AnalysisResults;
+import com.ibm.watson.natural_language_understanding.v1.model.AnalyzeOptions;
+import com.ibm.watson.natural_language_understanding.v1.model.CategoriesOptions;
+import com.ibm.watson.natural_language_understanding.v1.model.EntitiesOptions;
+import com.ibm.watson.natural_language_understanding.v1.model.Features;
+import com.ibm.watson.natural_language_understanding.v1.model.KeywordsOptions;
+import com.ibm.watson.tone_analyzer.v3.ToneAnalyzer;
+import com.ibm.watson.tone_analyzer.v3.model.ToneAnalysis;
+import com.ibm.watson.tone_analyzer.v3.model.ToneOptions;
+import com.ibm.watson.visual_recognition.v3.VisualRecognition;
+import com.ibm.watson.visual_recognition.v3.model.ClassifiedImages;
+import com.ibm.watson.visual_recognition.v3.model.ClassifyOptions;
 
 /**
  * Servlet implementation class AppendSelectionsServlet
@@ -130,13 +128,13 @@ public class AnalyzeServlet extends HttpServlet {
 						}
 					}
 	
-					if(mail.getAnalysis().getFr() == null) {
-						if(mail.getFace() != null && wvc != null){
-							if(Files.exists(Paths.get(mailsPath + "/" + mail.getFace()))){
-								callFR(mail);
-							}
-						}
-					}
+//					if(mail.getAnalysis().getFr() == null) {
+//						if(mail.getFace() != null && wvc != null){
+//							if(Files.exists(Paths.get(mailsPath + "/" + mail.getFace()))){
+//								callFR(mail);
+//							}
+//						}
+//					}
 					
 					Path mailsFile = Paths.get(mailsPath + "/mails.json");
 					
@@ -214,7 +212,7 @@ public class AnalyzeServlet extends HttpServlet {
 				.imagesFilename(mail.getPicture())
 				.build();
 		
-		ClassifiedImages visualClassification = wvc.classify(classifyImagesOptions).execute();
+		ClassifiedImages visualClassification = wvc.classify(classifyImagesOptions).execute().getResult();
 		
 		String result = visualClassification.toString();
 		
@@ -255,72 +253,72 @@ public class AnalyzeServlet extends HttpServlet {
 		return;
 	}
 
-	@SuppressWarnings("unchecked")
-	protected void callFR(Mail mail) throws IOException{
-
-		Path path = Paths.get(mailsPath + "/" + mail.getFace());
-		if(!Files.exists(path)){
-			return;
-		}
-
-		DetectFacesOptions options = new DetectFacesOptions.Builder()
-				.imagesFile(Files.newInputStream(path))
-				.imagesFilename(mail.getFace())
-				.build();
-
-		DetectedFaces detectedFaces = wvc.detectFaces(options).execute();
-		
-		String result = detectedFaces.toString();
-
-		InputStream is = new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8.name()));
-		
-		InputStreamReader isr = new InputStreamReader(is);
-		BufferedReader br = new BufferedReader(isr);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        Map<String, Object> svc = mapper.readValue(br, new TypeReference<Map<String, Object>>(){});
-		
-		List<Object> images = (List<Object>) svc.get("images");
-		
-		Map<String, Object> image0 = (Map<String, Object>) images.get(0);
-		
-		List<Map<String, Object>> fs = (List<Map<String, Object>>) image0.get("faces");
-		
-		List<Face> faces= new ArrayList<Face>();
-		
-		for(Map<String, Object> f: fs){
-			Face face = new Face();
-			Map<String, Object> age = (Map<String, Object>) f.get("age");
-			face.setAgeMax((Integer) age.get("max"));
-			face.setAgeMin((Integer) age.get("min"));
-			face.setAgeScore((Double) age.get("score"));
-			Map<String, Object> gender = (Map<String, Object>) f.get("gender");
-			face.setGender((String) gender.get("gender"));
-			face.setGenderScore((Double) gender.get("score"));
-			Map<String, Object> identity = (Map<String, Object>) f.get("identity");
-			if(identity != null){
-				face.setIdentityName((String) identity.get("name"));
-				face.setIdentityScore((Double) identity.get("score"));
-				face.setIdentityTypeHierarchy((String) identity.get("type_hierarchy"));
-			}
-			Map<String, Object> location = (Map<String, Object>) f.get("face_location");
-			face.setLocationHeight((Double) location.get("height"));
-			face.setLocationLeft((Double) location.get("left"));
-			face.setLocationTop((Double) location.get("top"));
-			face.setLocationWidth((Double) location.get("width"));
-			
-			face.setFace(mail.getFace());
-			faces.add(face);
-		}
-		
-		FR fr = new FR();
-		fr.setFaces(faces);
-
-		mail.getAnalysis().setFr(fr);
-
-		return;
-	}
+//	@SuppressWarnings("unchecked")
+//	protected void callFR(Mail mail) throws IOException{
+//
+//		Path path = Paths.get(mailsPath + "/" + mail.getFace());
+//		if(!Files.exists(path)){
+//			return;
+//		}
+//
+//		DetectFacesOptions options = new DetectFacesOptions.Builder()
+//				.imagesFile(Files.newInputStream(path))
+//				.imagesFilename(mail.getFace())
+//				.build();
+//
+//		DetectedFaces detectedFaces = wvc.detectFaces(options).execute();
+//		
+//		String result = detectedFaces.toString();
+//
+//		InputStream is = new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8.name()));
+//		
+//		InputStreamReader isr = new InputStreamReader(is);
+//		BufferedReader br = new BufferedReader(isr);
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+//        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+//        Map<String, Object> svc = mapper.readValue(br, new TypeReference<Map<String, Object>>(){});
+//		
+//		List<Object> images = (List<Object>) svc.get("images");
+//		
+//		Map<String, Object> image0 = (Map<String, Object>) images.get(0);
+//		
+//		List<Map<String, Object>> fs = (List<Map<String, Object>>) image0.get("faces");
+//		
+//		List<Face> faces= new ArrayList<Face>();
+//		
+//		for(Map<String, Object> f: fs){
+//			Face face = new Face();
+//			Map<String, Object> age = (Map<String, Object>) f.get("age");
+//			face.setAgeMax((Integer) age.get("max"));
+//			face.setAgeMin((Integer) age.get("min"));
+//			face.setAgeScore((Double) age.get("score"));
+//			Map<String, Object> gender = (Map<String, Object>) f.get("gender");
+//			face.setGender((String) gender.get("gender"));
+//			face.setGenderScore((Double) gender.get("score"));
+//			Map<String, Object> identity = (Map<String, Object>) f.get("identity");
+//			if(identity != null){
+//				face.setIdentityName((String) identity.get("name"));
+//				face.setIdentityScore((Double) identity.get("score"));
+//				face.setIdentityTypeHierarchy((String) identity.get("type_hierarchy"));
+//			}
+//			Map<String, Object> location = (Map<String, Object>) f.get("face_location");
+//			face.setLocationHeight((Double) location.get("height"));
+//			face.setLocationLeft((Double) location.get("left"));
+//			face.setLocationTop((Double) location.get("top"));
+//			face.setLocationWidth((Double) location.get("width"));
+//			
+//			face.setFace(mail.getFace());
+//			faces.add(face);
+//		}
+//		
+//		FR fr = new FR();
+//		fr.setFaces(faces);
+//
+//		mail.getAnalysis().setFr(fr);
+//
+//		return;
+//	}
 
 	@SuppressWarnings("unchecked")
 	protected ToneAnalysis callTA(Mail mail) throws IOException{
@@ -335,7 +333,7 @@ public class AnalyzeServlet extends HttpServlet {
 				.acceptLanguage("en")
 				.build();
 
-		ToneAnalysis toneAnalysis = ta.tone(options).execute();
+		ToneAnalysis toneAnalysis = ta.tone(options).execute().getResult();
 		
 		String result = toneAnalysis.toString();
 		
@@ -409,7 +407,8 @@ public class AnalyzeServlet extends HttpServlet {
 			.limit(2)
 			.build();
 
-		CategoriesOptions categoriesOptions = new CategoriesOptions();
+		CategoriesOptions categoriesOptions = new CategoriesOptions.Builder()
+				.build();
 
 		Features features = new Features.Builder()
 			.categories(categoriesOptions)
@@ -425,7 +424,7 @@ public class AnalyzeServlet extends HttpServlet {
 
 		AnalysisResults analysisResults = nlu
 			.analyze(parameters)
-			.execute();
+			.execute().getResult();
 		
 		String result = analysisResults.toString();
 		
