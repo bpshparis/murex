@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +23,7 @@ public class Tools {
 	public final static List<Mail> MailsListFromJSON(InputStream is) throws IOException {
 		List<Mail>	mails = new ArrayList<Mail>();
 		
-		InputStreamReader isr = new InputStreamReader(is);
+		InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 		BufferedReader br = new BufferedReader(isr);
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
@@ -37,13 +36,14 @@ public class Tools {
 		try{
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-		StringWriter sw = new StringWriter();
-		String jsonResult = null;
-		mapper.writeValue(sw, o);
-		sw.flush();
-		jsonResult = sw.toString();
-		sw.close();
-		return jsonResult;
+//		String jsonResult = null;
+//		StringWriter sw = new StringWriter();
+//		mapper.writeValue(sw, o);
+//		sw.flush();
+//		jsonResult = sw.toString();
+//		sw.close();
+		
+		return mapper.writeValueAsString(o);
 		}
 		catch(Exception e){
 			e.printStackTrace(System.err);
@@ -55,7 +55,7 @@ public class Tools {
 		List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
 		
 		try{
-			InputStreamReader isr = new InputStreamReader(is);
+			InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 			BufferedReader br = new BufferedReader(isr);
 	        ObjectMapper mapper = new ObjectMapper();
 	        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
@@ -81,7 +81,7 @@ public class Tools {
 		Map<String, Object>	map = new HashMap<String, Object>();
 		
 		try{
-			InputStreamReader isr = new InputStreamReader(is);
+			InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 			BufferedReader br = new BufferedReader(isr);
 	        ObjectMapper mapper = new ObjectMapper();
 	        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
@@ -106,7 +106,7 @@ public class Tools {
 	public final static <T> Object fromJSON(InputStream is, TypeReference<T> t){
 		
 		try{
-			InputStreamReader isr = new InputStreamReader(is);
+			InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 			BufferedReader br = new BufferedReader(isr);
 			ObjectMapper mapper = new ObjectMapper();
 	        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);

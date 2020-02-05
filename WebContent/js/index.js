@@ -776,6 +776,8 @@ sendMail.addEventListener(
     var attachedImage = document.getElementById('attachedImage').files[0];
     var attachedFace = document.getElementById('attachedFace').files[0];
 
+    console.log(text);
+
     var fd = new FormData();
 
     fd.append('text', JSON.stringify(text));
@@ -786,14 +788,18 @@ sendMail.addEventListener(
       fd.append('attachedFace', attachedFace, 'attachedFace.jpg');
     }
 
+    var mail = {};
+    mail['text'] = text;
+
+
     $.ajax({
       url: "SendMail",
       type: "POST",
-      data: fd,
-      enctype: 'multipart/form-data',
-      // dataType: 'application/zip',
-      processData: false,  // tell jQuery not to process the data
-      contentType: false   // tell jQuery not to set contentType
+      data: JSON.stringify(text),
+      dataType: 'json',
+      // enctype: 'multipart/form-data',
+      // processData: false,  // tell jQuery not to process the data
+      // contentType: false   // tell jQuery not to set contentType
     }).done(function( data ) {
       console.log(data);
       $("#modWriteMail").modal('toggle');

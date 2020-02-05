@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,6 +58,8 @@ public class SendMailServlet extends HttpServlet {
 
 		try {
 
+			Map<String, Object> reqParms = new HashMap<String, Object>();
+			
 			datas.put("FROM", this.getServletName());
 			String mailsPath = getServletContext().getRealPath("/res/mails");
 			
@@ -128,11 +131,11 @@ public class SendMailServlet extends HttpServlet {
 						if (item.isFormField() && item.getFieldName().equalsIgnoreCase("text")) {
 							item.getFieldName();
 				            String value = item.getString();
-				            System.out.println("value=" + value);
-				            value = URLEncoder.encode(value, "ISO-8859-1");
-				            System.out.println("value=" + value);
-				            value = URLDecoder.decode(value, "UTF-8");
-				            System.out.println("value=" + value);
+//				            System.out.println("value=" + value);
+//				            value = URLEncoder.encode(value, "UTF-8");
+//				            System.out.println("value=" + value);
+//				            value = URLDecoder.decode(value, "ISO-8859-1");
+//				            System.out.println("value=" + value);
 				            Map<String, Object> text = Tools.fromJSON(new ByteArrayInputStream(value.getBytes()));
 				            mail.setSubject((String) text.get("subject"));
 				            mail.setContent((String) text.get("body"));
@@ -141,7 +144,7 @@ public class SendMailServlet extends HttpServlet {
 						}
 					}
 					mails.add(mail);
-					Files.write(mailsFile, Tools.toJSON(mails).getBytes());
+					Files.write(mailsFile, Tools.toJSON(mails).getBytes(StandardCharsets.UTF_8.name()));
 //					Files.setPosixFilePermissions(mailsFile, perms);
 					mailsFile.toFile().setReadable(true);
 					mailsFile.toFile().setWritable(true);
@@ -150,6 +153,21 @@ public class SendMailServlet extends HttpServlet {
 					
 				}
 			}
+			
+
+			reqParms = Tools.fromJSON(request.getInputStream());
+			datas.put("REQ_PARMS", reqParms);
+			
+			Mail mail = new Mail();
+			mail.setContent((String) reqParms.get("body"));
+            datas.put("MAIL", mail);
+			mails.add(mail);
+			Files.write(mailsFile, Tools.toJSON(mails).getBytes("UTF-8"));
+//			Files.setPosixFilePermissions(mailsFile, perms);
+			mailsFile.toFile().setReadable(true);
+			mailsFile.toFile().setWritable(true);
+			mailsFile.toFile().setExecutable(true);
+			
 			datas.put("STATUS", "OK");
 			datas.put("MAILCOUNT", mails.size());
 				
