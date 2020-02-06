@@ -7,18 +7,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.PosixFilePermission;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -138,21 +134,8 @@ public class AnalyzeServlet extends HttpServlet {
 					
 					Path mailsFile = Paths.get(mailsPath + "/mails.json");
 					
-					Set<PosixFilePermission> perms = new HashSet<>();
-				    perms.add(PosixFilePermission.OWNER_READ);
-				    perms.add(PosixFilePermission.OWNER_WRITE);
-				    perms.add(PosixFilePermission.OWNER_EXECUTE);
-			
-				    perms.add(PosixFilePermission.OTHERS_READ);
-				    perms.add(PosixFilePermission.OTHERS_WRITE);
-				    perms.add(PosixFilePermission.OTHERS_EXECUTE);
-			
-				    perms.add(PosixFilePermission.GROUP_READ);
-				    perms.add(PosixFilePermission.GROUP_WRITE);
-				    perms.add(PosixFilePermission.GROUP_EXECUTE);	
 
-					Files.write(mailsFile, Tools.toJSON(mails).getBytes());
-//					Files.setPosixFilePermissions(mailsFile, perms);
+					Files.write(mailsFile, Tools.toJSON(mails).getBytes("UTF-8"));
 					mailsFile.toFile().setReadable(true);
 					mailsFile.toFile().setWritable(true);
 					mailsFile.toFile().setExecutable(true);
@@ -216,7 +199,7 @@ public class AnalyzeServlet extends HttpServlet {
 		
 		String result = visualClassification.toString();
 		
-		InputStream is = new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8.name()));
+		InputStream is = new ByteArrayInputStream(result.getBytes());
 		
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
@@ -337,7 +320,7 @@ public class AnalyzeServlet extends HttpServlet {
 		
 		String result = toneAnalysis.toString();
 		
-		InputStream is = new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8.name()));
+		InputStream is = new ByteArrayInputStream(result.getBytes());
 		
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
@@ -428,7 +411,7 @@ public class AnalyzeServlet extends HttpServlet {
 		
 		String result = analysisResults.toString();
 		
-		InputStream is = new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8.name()));
+		InputStream is = new ByteArrayInputStream(result.getBytes());
 		
 		InputStreamReader isr = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(isr);
@@ -436,10 +419,13 @@ public class AnalyzeServlet extends HttpServlet {
         mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         Map<String, Object> svc = mapper.readValue(br, new TypeReference<Map<String, Object>>(){});
+        
+//        Map<String, Object> svc = (Map<String, Object>) Tools.fromJSON(result, new TypeReference<Map<String, Object>>(){});
+        
 
 		String language = (String) svc.get("language");
 		
-		String json = mapper.writeValueAsString((List<Object>) svc.get("entities"));
+		String json = Tools.toJSON(svc.get("entities"));
 		List<Entity> entities = Arrays.asList(mapper.readValue(json, Entity[].class));
 		for(Entity entity: entities){
 			entity.setContent(mail.getContent());

@@ -240,8 +240,8 @@ public class ContextListener implements ServletContextListener {
 		}
     	
 		Authenticator authenticator = new IamAuthenticator(password);
-		VisualRecognition service = new VisualRecognition(version, authenticator);
-		service.setServiceUrl(url);
+		wvc = new VisualRecognition(version, authenticator);
+		wvc.setServiceUrl(url);
 		
 		System.out.println(wvc.getName() + " " + wvc.getServiceUrl());
 		

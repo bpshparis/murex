@@ -23,6 +23,8 @@ public class Main3 {
 		Authenticator authenticator = new IamAuthenticator(password);
 		com.ibm.watson.visual_recognition.v3.VisualRecognition service = new VisualRecognition(version, authenticator);
 		service.setServiceUrl(url);
+		
+		System.out.println(service.getName());
 
 		System.out.println("Classify an image");
 		ClassifyOptions options = new ClassifyOptions.Builder()

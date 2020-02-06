@@ -1,9 +1,16 @@
 package com.bpshparis.wsvc.app0;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -39,15 +46,15 @@ public class CheckInitServlet extends HttpServlet {
 			
 			datas.put("FROM", this.getServletName());
 			datas.put("INIT", request.getServletContext().getAttribute("init"));
-//			// Let see if mails.json exists in /res/mails and load it
-//			List<Mail> mails = new ArrayList<Mail>();
-//			String mailsPath = getServletContext().getRealPath("/res/mails");
-//			Path mailsFile = Paths.get(mailsPath + "/mails.json");
-//			if(Files.exists(mailsFile)){
-//				InputStream is = new ByteArrayInputStream(Files.readAllBytes(mailsFile));
-//				mails = Tools.MailsListFromJSON(is);
-//			}
-//			datas.put("MAILCOUNT", mails.size());
+			// Let see if mails.json exists in /res/mails and load it
+			List<Mail> mails = new ArrayList<Mail>();
+			String mailsPath = getServletContext().getRealPath("/res/mails");
+			Path mailsFile = Paths.get(mailsPath + "/mails.json");
+			if(Files.exists(mailsFile)){
+				InputStream is = new ByteArrayInputStream(Files.readAllBytes(mailsFile));
+				mails = Tools.MailsListFromJSON(is);
+			}
+			datas.put("MAILCOUNT", mails.size());
 
 			datas.put("STATUS", "OK");
 				

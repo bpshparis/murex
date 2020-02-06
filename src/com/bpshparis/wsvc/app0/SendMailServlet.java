@@ -6,21 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.nio.file.attribute.PosixFilePermission;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -74,26 +67,12 @@ public class SendMailServlet extends HttpServlet {
 			
 			if(ServletFileUpload.isMultipartContent(request)){
 				
-				Set<PosixFilePermission> perms = new HashSet<>();
-			    perms.add(PosixFilePermission.OWNER_READ);
-			    perms.add(PosixFilePermission.OWNER_WRITE);
-			    perms.add(PosixFilePermission.OWNER_EXECUTE);
-		
-			    perms.add(PosixFilePermission.OTHERS_READ);
-			    perms.add(PosixFilePermission.OTHERS_WRITE);
-			    perms.add(PosixFilePermission.OTHERS_EXECUTE);
-		
-			    perms.add(PosixFilePermission.GROUP_READ);
-			    perms.add(PosixFilePermission.GROUP_WRITE);
-			    perms.add(PosixFilePermission.GROUP_EXECUTE);	
-
 				List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 				Path mailIdPath = Paths.get(mailsPath + "/" + String.valueOf(mailId));
 				if(Files.exists(mailIdPath)){
 					FileUtils.deleteDirectory(mailIdPath.toFile());
 				}
 				if(mailIdPath.toFile().mkdir()) {
-//					Files.setPosixFilePermissions(mailIdPath, perms);
 					mailIdPath.toFile().setExecutable(true);
 					mailIdPath.toFile().setWritable(true);
 					mailIdPath.toFile().setReadable(true);
@@ -110,7 +89,6 @@ public class SendMailServlet extends HttpServlet {
 									
 									Path imageFile = Paths.get(mailIdPath + "/" + item.getName());
 									Files.copy(new BufferedInputStream(item.getInputStream()), imageFile, StandardCopyOption.REPLACE_EXISTING);
-//									Files.setPosixFilePermissions(imageFile, perms);
 									imageFile.toFile().setReadable(true);
 									datas.put("IMAGE", "OK: save in " +  imageFile);
 									mail.setPicture(String.valueOf(mailId) + "/attachedImage.jpg");
@@ -120,7 +98,6 @@ public class SendMailServlet extends HttpServlet {
 									
 									Path faceFile = Paths.get(mailIdPath + "/" + item.getName());
 									Files.copy(new BufferedInputStream(item.getInputStream()), faceFile, StandardCopyOption.REPLACE_EXISTING);								
-//									Files.setPosixFilePermissions(faceFile, perms);
 									faceFile.toFile().setReadable(true);
 									datas.put("FACE", "OK: save in " +  faceFile);
 									mail.setFace(String.valueOf(mailId) + "/attachedFace.jpg");
@@ -136,7 +113,7 @@ public class SendMailServlet extends HttpServlet {
 //				            System.out.println("value=" + value);
 //				            value = URLDecoder.decode(value, "ISO-8859-1");
 //				            System.out.println("value=" + value);
-				            Map<String, Object> text = Tools.fromJSON(new ByteArrayInputStream(value.getBytes()));
+				            Map<String, Object> text = Tools.fromJSON(new ByteArrayInputStream(value.getBytes("UTF-8")));
 				            mail.setSubject((String) text.get("subject"));
 				            mail.setContent((String) text.get("body"));
 				            mail.setLanguage((String) text.get("lang"));
@@ -144,7 +121,7 @@ public class SendMailServlet extends HttpServlet {
 						}
 					}
 					mails.add(mail);
-					Files.write(mailsFile, Tools.toJSON(mails).getBytes(StandardCharsets.UTF_8.name()));
+					Files.write(mailsFile, Tools.toJSON(mails).getBytes("UTF-8"));
 //					Files.setPosixFilePermissions(mailsFile, perms);
 					mailsFile.toFile().setReadable(true);
 					mailsFile.toFile().setWritable(true);
@@ -154,19 +131,28 @@ public class SendMailServlet extends HttpServlet {
 				}
 			}
 			
+			else {
+				reqParms = Tools.fromJSON(request.getInputStream());
+				datas.put("REQ_PARMS", reqParms);
 
-			reqParms = Tools.fromJSON(request.getInputStream());
-			datas.put("REQ_PARMS", reqParms);
-			
-			Mail mail = new Mail();
-			mail.setContent((String) reqParms.get("body"));
-            datas.put("MAIL", mail);
-			mails.add(mail);
-			Files.write(mailsFile, Tools.toJSON(mails).getBytes("UTF-8"));
-//			Files.setPosixFilePermissions(mailsFile, perms);
-			mailsFile.toFile().setReadable(true);
-			mailsFile.toFile().setWritable(true);
-			mailsFile.toFile().setExecutable(true);
+				
+				if(reqParms.containsKey("mailCount")) {
+					int mailCount = (int) reqParms.get("mailCount");
+
+					Mail mail = mails.get(mailCount -1);
+					
+					mail.setContent((String) reqParms.get("body"));
+					mail.setSubject((String) reqParms.get("subject"));
+					mail.setLanguage((String) reqParms.get("lang"));
+		            datas.put("MAIL", mail);
+//					mails.add(mail);
+					Files.write(mailsFile, Tools.toJSON(mails).getBytes("UTF-8"));
+					mailsFile.toFile().setReadable(true);
+					mailsFile.toFile().setWritable(true);
+					mailsFile.toFile().setExecutable(true);
+				}
+				
+			}
 			
 			datas.put("STATUS", "OK");
 			datas.put("MAILCOUNT", mails.size());

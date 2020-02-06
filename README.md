@@ -316,24 +316,24 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 ![](res/win.png)
 
-* Download and **install** [latest JDK 8](https://ibm.ent.box.com/v/murex-festival/file/481735358242) <!--(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/winjdk.jpg) -->
-* Download **only** [WAS Liberty Kernel](https://ibm.ent.box.com/v/murex-festival/file/481751728904) <!-- (https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) -->into your **home directory**.
-* Download [jq](https://ibm.ent.box.com/v/murex-festival/file/481751500779) <!-- (https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe) -->, rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
+* Download and **install** [latest JDK 8](https://jdk.java.net/java-se-ri/8-MR3) <!--(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/winjdk.jpg) -->
+* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) <!-- (https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) -->into your **home directory**.
+* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe) <!-- (https://github.com/stedolan/jq/releases/download/jq-1.5/jq-win64.exe) -->, rename it to **jq** and copy it in your %PATH% (e.g. **C:\Windows\System32**).
 
 ![](res/mac.png)
 
-* Download and **install** [latest JDK 8](https://ibm.ent.box.com/v/murex-festival/file/481752049718) <!--(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/macjdk.jpg) -->
-* Download **only** [WAS Liberty Kernel](https://ibm.ent.box.com/v/murex-festival/file/481751728904) <!--(https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) --> into your **home directory**.
-* Download [jq](https://ibm.ent.box.com/v/murex-festival/file/481750728277) <!--(https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64) -->, rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
+* Download and **install** [latest JDK 8](https://jdk.java.net/java-se-ri/8-MR3) <!--(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/macjdk.jpg) -->
+* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) <!--(https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) --> into your **home directory**.
+* Download [jq](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64) <!--(https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64) -->, rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 <!--
 * Download [sponge](https://github.com/bpshparis/CP2019/blob/master/osxtools/sponge) :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 -->
 
 ![](res/tux.png)
 
-* Download and **install** [latest JDK 8](https://ibm.ent.box.com/v/murex-festival/file/481726007707) <!-- (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/tuxjdk.jpg) -->
-* Download **only** [WAS Liberty Kernel](https://ibm.ent.box.com/v/murex-festival/file/481751728904) <!--(https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel)--> into your **home directory**.
-* Get **jq** from your distribution repository or download it from [here](https://ibm.ent.box.com/v/murex-festival/file/481751501979) <!--(https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64) -->, rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
+* Download and **install** [latest JDK 8](https://jdk.java.net/java-se-ri/8-MR3) <!-- (https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) :warning: be sure to download a :thumbsup: **​Java SE Development Kit 8uXXX** and :no_entry: not **Demos and Samples** :no_entry:. ![](res/tuxjdk.jpg) -->
+* Download **only** [WAS Liberty Kernel](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel) <!--(https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-kernel)--> into your **home directory**.
+* Get **jq** from your distribution repository or download it from [here](https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64) <!--(https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64) -->, rename it to **jq**, :warning: set its attribute to executable (e.g. **chmod +x**) and copy it in your $PATH.
 
 <br>
 
@@ -373,7 +373,7 @@ Check jq command is available:
 
 ![](res/web.png)
 
-Browse [github application repository](https://github.com/bpshparis/murex), download code (e.g. **murex-master.zip**)
+Browse [github application repository](https://github.com/bpshparis/slcdw), download code (e.g. **slcdw-master.zip**)
 ![](res/dlcode.jpg)
 
 
@@ -478,7 +478,7 @@ then create
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
-    <dir sourceOnDisk="%HOMEPATH%/murex-master/WebContent" targetInArchive="/"/>
+    <dir sourceOnDisk="%HOMEPATH%/slcdw-master/WebContent" targetInArchive="/"/>
 </archive>
 ```
 
@@ -490,7 +490,7 @@ then create
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <archive>
-    <dir sourceOnDisk="$HOME/murex-master/WebContent" targetInArchive="/"/>
+    <dir sourceOnDisk="$HOME/slcdw-master/WebContent" targetInArchive="/"/>
 </archive>
 ```
 
@@ -499,7 +499,7 @@ then create
 
 ![](res/notepad.png)
 
-Save **vcap.json** in **murex-master** directory.
+Save **vcap.json** in **slcdw-master** directory.
 
 
 
@@ -507,14 +507,14 @@ Change to code directory and be sure to stand in the right place
 
 ![](res/win.png)![](res/cmd.png)
 
-	cd murex-master
+	cd slcdw-master
 
 
 	dir
 
 ![](res/mac.png)![](res/tux.png)![](res/term.png)
 
-	cd murex-master
+	cd slcdw-master
 
 
 	ls -l

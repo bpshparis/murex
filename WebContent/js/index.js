@@ -769,18 +769,17 @@ function initPrjLanguage(){
 sendMail.addEventListener(
   'click', function(event){
 
+    var mailCount = Number($("#mailCount").text());
+
     var text = {};
     text['subject'] = $("#subject").val();
     text['body'] = $("#body").val();
     text['lang'] = $("#prjLanguage").find("option:selected").val();
-    var attachedImage = document.getElementById('attachedImage').files[0];
-    var attachedFace = document.getElementById('attachedFace').files[0];
-
     console.log(text);
 
     var fd = new FormData();
-
-    fd.append('text', JSON.stringify(text));
+    var attachedImage = document.getElementById('attachedImage').files[0];
+    var attachedFace = document.getElementById('attachedFace').files[0];
     if(attachedImage instanceof Blob){
       fd.append('attachedImage', attachedImage, 'attachedImage.jpg');
     }
@@ -788,20 +787,30 @@ sendMail.addEventListener(
       fd.append('attachedFace', attachedFace, 'attachedFace.jpg');
     }
 
-    var mail = {};
-    mail['text'] = text;
-
-
     $.ajax({
       url: "SendMail",
       type: "POST",
-      data: JSON.stringify(text),
-      dataType: 'json',
-      // enctype: 'multipart/form-data',
-      // processData: false,  // tell jQuery not to process the data
-      // contentType: false   // tell jQuery not to set contentType
+      data: fd,
+      processData: false,  // tell jQuery not to process the data
+      contentType: false   // tell jQuery not to set contentType
     }).done(function( data ) {
       console.log(data);
+      text['mailCount'] = data.MAILCOUNT;
+      if(data.STATUS == 'OK'){
+        $.ajax({
+          url: "SendMail",
+          type: "POST",
+          data: JSON.stringify(text),
+          dataType: 'json',
+      
+          success: function(data) {
+            console.log(data);
+          },
+          error: function(data) {
+            console.log(data);
+          }
+        });        
+      }
       $("#modWriteMail").modal('toggle');
       if(data.MAILCOUNT > 0){
         $("#mailCount").text(data.MAILCOUNT);
