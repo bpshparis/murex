@@ -384,7 +384,7 @@ and unzip it:
 
 :bulb: Feel free to unzip with any GUI tool but :warning: be sure to unzip in your **home directory**.	
 
-:bulb: You should now have a directory called **murex-master** in your **home directory**.
+:bulb: You should now have a directory called **slcdw-master** in your **home directory**.
 
 <br>
 
