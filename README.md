@@ -254,45 +254,6 @@ Copy **URL:** and paste it in place of **$(WVC_URL)** in **vcap.json**
 
 
 
-<!--
-	ibmcloud catalog search tone
-	ibmcloud catalog service tone-analyzer
-	ibmcloud resource service-instance-create ta tone-analyzer lite eu-de
-	ibmcloud resource service-key-create taKey Manager --instance-name ta
-	export TA_APIKEY=$(ibmcloud resource service-key taKey | awk '/^\s*apikey:/ {print $2}') && echo $TA_APIKEY
-	export TA_URL=$(ibmcloud resource service-key taKey | awk '/^\s*url:/ {print $2}') && echo $TA_URL
-	export TA_METHOD=/v3/tone?version=2017-09-21 && echo $TA_METHOD
-	export TA_TEXT="On en a gros !" && echo $TA_TEXT
-	jq -n --arg value "$TA_TEXT" '{"text": $value}' | tee ta.req.json | jq .
-	curl -X POST -u 'apikey:'$TA_APIKEY -H 'Content-Type: application/json' -H 'Content-Language: fr' -H 'Accept-Language: fr' -d @ta0.req.json $TA_URL$TA_METHOD | tee ta.resp.json | jq .
--->
-
-<!--
-	ibmcloud catalog search understanding
-	ibmcloud catalog service natural-language-understanding
-	ibmcloud resource service-instance-create nlu natural-language-understanding free eu-de	
-	ibmcloud resource service-key-create nluKey Manager --instance-name nlu
-	export NLU_APIKEY=$(ibmcloud resource service-key nluKey | awk '/^\s*apikey:/ {print $2}') && echo $NLU_APIKEY
-	export NLU_URL=$(ibmcloud resource service-key nluKey | awk '/^\s*url:/ {print $2}') && echo $NLU_URL
-	export NLU_METHOD=/v1/analyze?version=2018-11-16 && echo $NLU_METHOD
-	export NLU_FEATURES='{"sentiment": {}, "keywords": {}, "entities": {}}' && echo "$NLU_FEATURES" | jq .
-	export NLU_TEXT="J'aimerai avoir des nouvelles de ma commande passée il y a déjà 15 jours et que je n'ai toujours pas reçu." && echo $NLU_TEXT
-	jq -n --argjson features "$NLU_FEATURES" --arg text "$NLU_TEXT" '{"text": $text, "features": $features}' | tee nlu.req.json | jq .
-	curl -X POST -u 'apikey:'$NLU_APIKEY -H 'Content-Type: application/json' -d @nlu.req.json $NLU_URL$NLU_METHOD | tee nlu.resp.json | jq .
--->
-
-<!--
-	ibmcloud catalog search vision
-	ibmcloud catalog service watson-vision-combined
-	ibmcloud resource service-instance-create wvc watson-vision-combined lite us-south	
-	ibmcloud resource service-key-create wvcKey Manager --instance-name wvc
-	export WVC_APIKEY=$(ibmcloud resource service-key wvcKey | awk '/^\s*apikey:/ {print $2}') && echo $WVC_APIKEY
-	export WVC_URL=$(ibmcloud resource service-key wvcKey | awk '/^\s*url:/ {print $2}') && echo $WVC_URL
-	export WVC_METHOD=/v3/classify?version=2018-03-19 && echo $WVC_METHOD
-	export IMG=$(readlink -f image1.jpg) && echo $IMG
-	curl -X POST -u 'apikey:'$WVC_APIKEY -H 'Accept-Language: fr' -F 'images_file=@'$IMG $WVC_URL$WVC_METHOD | tee wvc.resp.json | jq .
--->
-
 
 ### Setup application
 

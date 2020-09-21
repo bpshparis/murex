@@ -16,9 +16,9 @@ public class Main3 {
 		// TODO Auto-generated method stub
 		String version = "2018-03-19";
 //		String username = "apikey";
-		String password = "3_QCFqpyW6ZcSmnpbY3uRqBIC6KgxxTYGhxPIR1kZKeX";
+		String password = "6hERFtFs1-hoJ9HADO8E_e18VqI6B-XKacx-6L4SIrGj";
 		String url = "https://gateway.watsonplatform.net/visual-recognition/api";
-		Path path = Paths.get("/home/fr054721/slcdw/image0.jpg");
+		Path path = Paths.get("/home/fr054721/slcdw/image1.jpg");
 		
 		Authenticator authenticator = new IamAuthenticator(password);
 		com.ibm.watson.visual_recognition.v3.VisualRecognition service = new VisualRecognition(version, authenticator);

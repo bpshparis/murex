@@ -1,25 +1,11 @@
 {
-  "3d64678f-3556-437a-9b81-fab9c55d2106": {
-    "credentials": [
-      {
-        "id": "resource-key",
-        "name": "waKey",
-        "apikey": "faGuJhhs0jG-7G8sh5w31tVAORwbnxM6Lck4zw_41GW1",
-        "url": "https://api.eu-de.assistant.watson.cloud.ibm.com/instances/3d64678f-3556-437a-9b81-fab9c55d2106",
-        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
-      }
-    ],
-    "service": "conversation",
-    "region": "eu-de",
-    "instance": "wa0"
-  },
-  "6c7aaa0b-c109-48ae-8d6f-f29bccc192e1": {
+  "bd7f4dd2-523d-48fa-97b2-c66c0e7f2ca7": {
     "credentials": [
       {
         "id": "resource-key",
         "name": "taKey",
-        "apikey": "PD_HgnUPZoU-Z7LyW1SuHRp240vnpE_AhRtNFuLuxVEK",
-        "url": "https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/6c7aaa0b-c109-48ae-8d6f-f29bccc192e1",
+        "apikey": "ey0kcHV40mI-zKNhypnVcHM3c8poE_rm2bhwsHtqIVLx",
+        "url": "https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/bd7f4dd2-523d-48fa-97b2-c66c0e7f2ca7",
         "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
       }
     ],
@@ -27,13 +13,13 @@
     "region": "eu-de",
     "instance": "ta"
   },
-  "dbf2141d-cf8b-4fe6-b860-37da373164d3": {
+  "b7642281-705e-45bb-b893-fa6c2e89f275": {
     "credentials": [
       {
         "id": "resource-key",
         "name": "nluKey",
-        "apikey": "0otCa3OGloEYgG3RN1RddX8go0ayXXv8nklwEPECX3Ei",
-        "url": "https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com/instances/dbf2141d-cf8b-4fe6-b860-37da373164d3",
+        "apikey": "spIk3ITK6e86qHha-R2b3BEbTlDhwZEEhTySt_8m36Y7",
+        "url": "https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com/instances/b7642281-705e-45bb-b893-fa6c2e89f275",
         "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
       }
     ],
@@ -41,18 +27,18 @@
     "region": "eu-de",
     "instance": "nlu"
   },
-  "0cd87b6a-203e-47f0-bd1b-09001c359c8e": {
+  "a6a570dd-6939-4fc4-a017-4c64e4ea5f84": {
     "credentials": [
       {
         "id": "resource-key",
         "name": "wvcKey",
-        "apikey": "6hERFtFs1-hoJ9HADO8E_e18VqI6B-XKacx-6L4SIrGj",
-        "url": "https://api.us-south.visual-recognition.watson.cloud.ibm.com/instances/0cd87b6a-203e-47f0-bd1b-09001c359c8e",
+        "apikey": "_VzUtOvBLLFEzJBL83iGBEpH2SUkz4FpOna5aLsw4nYL",
+        "url": "https://api.eu-de.visual-recognition.watson.cloud.ibm.com/instances/a6a570dd-6939-4fc4-a017-4c64e4ea5f84",
         "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
       }
     ],
     "service": "watson-vision-combined",
-    "region": "us-south",
+    "region": "eu-de",
     "instance": "wvc"
   }
 }
