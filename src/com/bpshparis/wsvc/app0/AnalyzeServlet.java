@@ -381,13 +381,11 @@ public class AnalyzeServlet extends HttpServlet {
 		EntitiesOptions entitiesOptions = new EntitiesOptions.Builder()
 			.emotion(true)
 			.sentiment(true)
-			.limit(2)
 			.build();
 
 		KeywordsOptions keywordsOptions = new KeywordsOptions.Builder()
 			.emotion(true)
 			.sentiment(true)
-			.limit(2)
 			.build();
 
 		CategoriesOptions categoriesOptions = new CategoriesOptions.Builder()
