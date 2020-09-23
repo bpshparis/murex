@@ -8,7 +8,6 @@ public class Resource {
 	String service = "";
 	String region = "";
 	String instance = "";
-	String name = "";
 	List<Credential> credentials = new ArrayList<Credential>();
 	
 	public String getService() {
@@ -34,12 +33,6 @@ public class Resource {
 	}
 	public void setCredentials(List<Credential> credentials) {
 		this.credentials = credentials;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 }

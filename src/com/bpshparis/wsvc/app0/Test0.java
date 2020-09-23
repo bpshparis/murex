@@ -34,7 +34,7 @@ public class Test0 {
 				Credential cred = (Credential) Tools.fromJSON(Tools.toJSON(value.get("credentials")), new TypeReference<Credential>(){});
 				System.out.println(Tools.toJSON(cred));
 				Resource resource = new Resource();
-				resource.setName(name);
+				resource.setService(name);
 				resource.setCredentials(Arrays.asList(cred));
 				resources.add(resource);
 			}
