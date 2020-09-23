@@ -31,7 +31,7 @@ ibmcloud catalog service-marketplace | grep -i tone
 
 ibmcloud catalog service tone-analyzer
 
-ibmcloud resource service-instance-create ta tone-analyzer lite eu-de
+ibmcloud resource service-instance-create ta tone-analyzer lite $REGION
 
 ibmcloud resource service-key-create taKey Manager --instance-name ta
 
@@ -63,7 +63,7 @@ ibmcloud catalog service-marketplace | grep -i understand
 
 ibmcloud catalog service natural-language-understanding
 
-ibmcloud resource service-instance-create nlu natural-language-understanding free eu-de	
+ibmcloud resource service-instance-create nlu natural-language-understanding free $REGION	
 
 ibmcloud resource service-key-create nluKey Manager --instance-name nlu
 
@@ -95,7 +95,7 @@ ibmcloud catalog service-marketplace | grep -i vis
 
 ibmcloud catalog service watson-vision-combined
 	
-ibmcloud resource service-instance-create wvc watson-vision-combined lite eu-de	
+ibmcloud resource service-instance-create wvc watson-vision-combined lite $REGION	
 
 ibmcloud resource service-key-create wvcKey Manager --instance-name wvc
 
@@ -109,7 +109,9 @@ WVC_METHOD="/v3/classify" && echo $WVC_METHOD
 
 WVC_REQUEST="$WVC_METHOD?version=$WVC_VERSION" && echo $WVC_REQUEST
 
-IMG="/home/Pictures/pic0.jpg" && echo $IMG
+IMG="/home/Pictures/pic0.jpg"
+
+[ -f "$IMG" ] && echo ls -Alhtr $IMG || echo "ERROR: IMG does not exists" 
 
 WVC_OUTPUT_DATA="wvc.resp.json"
 
@@ -124,9 +126,11 @@ SPACE=$(ibmcloud account spaces -r $REGION -o $ORG --output JSON | jq -r .[0].na
 
 ibmcloud target --cf -r $REGION -o $ORG -s $SPACE -g $GROUP
 
-ibmcloud resource service-alias-create wvc --instance-name wvc -g default -s dev
+ibmcloud resource service-alias-create ta --instance-name ta -g $GROUP -s $SPACE
+ibmcloud resource service-alias-create nlu --instance-name nlu -g $GROUP -s $SPACE
+ibmcloud resource service-alias-create wvc --instance-name wvc -g $GROUP -s $SPACE
 
-ibmcloud resource service-binding-create wvc  mailbox-analyzer Manager
+#ibmcloud resource service-binding-create wvc  mailbox-analyzer Manager
 
 
 ```

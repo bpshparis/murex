@@ -1,0 +1,84 @@
+{
+  "watson_vision_combined": [
+    {
+      "label": "watson_vision_combined",
+      "provider": null,
+      "plan": "lite",
+      "name": "wvc",
+      "tags": [
+        "watson",
+        "ibm_created",
+        "ibm_dedicated_public",
+        "lite",
+        "ibmcloud-alias"
+      ],
+      "instance_name": "wvc",
+      "binding_name": null,
+      "credentials": {
+        "apikey": "uOAbLp_qeYGDsHlfKQQpE10QkGcdC93tro-YChNsAiLQ",
+        "iam_apikey_description": "Auto-generated for binding d50331f7-50e5-40fc-a389-c45be15831f2",
+        "iam_apikey_name": "wvc",
+        "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+        "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/290f8f438c15a26b2b129419c13a6679::serviceid:ServiceId-8195a620-7e3a-4c81-9d89-443d9b846aeb",
+        "url": "https://api.eu-de.visual-recognition.watson.cloud.ibm.com/instances/e2150c4c-24eb-46a1-be8c-8378f41ef9a5"
+      },
+      "syslog_drain_url": null,
+      "volume_mounts": []
+    }
+  ],
+  "natural-language-understanding": [
+    {
+      "label": "natural-language-understanding",
+      "provider": null,
+      "plan": "free",
+      "name": "nlu",
+      "tags": [
+        "watson",
+        "ibm_created",
+        "ibm_dedicated_public",
+        "lite",
+        "ibmcloud-alias"
+      ],
+      "instance_name": "nlu",
+      "binding_name": null,
+      "credentials": {
+        "apikey": "5JgsZ0Ys2DGn4UfBh-DCC2tXprboYvkfqq4ESbevApof",
+        "iam_apikey_description": "Auto-generated for binding 1d81276e-f27c-4657-856c-0a710755a7ca",
+        "iam_apikey_name": "nlu",
+        "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+        "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/290f8f438c15a26b2b129419c13a6679::serviceid:ServiceId-37b44acb-8fb6-475a-bcbc-de9024b950db",
+        "url": "https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com/instances/36876ed1-cc91-4236-8eb4-09c6ab867706"
+      },
+      "syslog_drain_url": null,
+      "volume_mounts": []
+    }
+  ],
+  "tone_analyzer": [
+    {
+      "label": "tone_analyzer",
+      "provider": null,
+      "plan": "lite",
+      "name": "ta",
+      "tags": [
+        "watson",
+        "ibm_created",
+        "ibm_dedicated_public",
+        "lite",
+        "ibmcloud-alias"
+      ],
+      "instance_name": "ta",
+      "binding_name": null,
+      "credentials": {
+        "apikey": "XmIGPOH4xjuDY_Z9-HE5aYyVCaVLzAh3Ey84g9WCm0zH",
+        "iam_apikey_description": "Auto-generated for binding 761ab95c-fd02-492c-9af7-b6eacc06d8f1",
+        "iam_apikey_name": "ta",
+        "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+        "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/290f8f438c15a26b2b129419c13a6679::serviceid:ServiceId-7a811b3e-4e5a-494b-9178-ada1de9351f2",
+        "url": "https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/91a6b00e-32ab-469e-8a41-2cca18bdc140"
+      },
+      "syslog_drain_url": null,
+      "volume_mounts": []
+    }
+  ]
+}
+
