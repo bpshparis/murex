@@ -20,7 +20,10 @@ ibmcloud login -u ${USERID} --sso
 
 ibmcloud iam api-key-create apikey1 -d "apikey1" --file /home/apikey1
 
-ibmcloud login --apikey @home/apikey1 --no-region -g deafult
+GROUP=$(ibmcloud resource groups --output json | jq -r .[0].name) && echo $GROUP
+REGION="eu-de" && echo $REGION
+
+ibmcloud login --apikey @/home/apikey1 -r $REGION -g $GROUP
 
 # Start Tone Analyzer
 
@@ -28,7 +31,7 @@ ibmcloud catalog service-marketplace | grep -i tone
 
 ibmcloud catalog service tone-analyzer
 
-ibmcloud resource service-instance-create ta tone-analyzer lite eu-de
+ibmcloud resource service-instance-create ta tone-analyzer lite $REGION
 
 ibmcloud resource service-key-create taKey Manager --instance-name ta
 
@@ -60,13 +63,13 @@ ibmcloud catalog service-marketplace | grep -i understand
 
 ibmcloud catalog service natural-language-understanding
 
-ibmcloud resource service-instance-create nlu natural-language-understanding free eu-de	
+ibmcloud resource service-instance-create nlu natural-language-understanding free $REGION	
 
 ibmcloud resource service-key-create nluKey Manager --instance-name nlu
 
-export NLU_APIKEY=$(ibmcloud resource service-key nluKey --output json | jq -r .[].credentials.apikey) && echo $NLU_APIKEY
+NLU_APIKEY=$(ibmcloud resource service-key nluKey --output json | jq -r .[].credentials.apikey) && echo $NLU_APIKEY
 	
-export NLU_URL=$(ibmcloud resource service-key nluKey --output json | jq -r .[].credentials.url) && echo $NLU_URL
+NLU_URL=$(ibmcloud resource service-key nluKey --output json | jq -r .[].credentials.url) && echo $NLU_URL
 
 NLU_VERSION="2020-08-01" && echo $NLU_VERSION
 
@@ -74,7 +77,7 @@ NLU_METHOD="/v1/analyze" && echo $NLU_METHOD
 
 NLU_REQUEST="$NLU_METHOD/?version=$NLU_VERSION" && echo $NLU_REQUEST
 
-export NLU_TEXT="J'aimerai avoir des nouvelles de ma commande passée il y a déjà 15 jours et que je n'ai toujours pas reçu." && echo $NLU_TEXT
+NLU_TEXT="J'aimerai avoir des nouvelles de ma commande passée il y a déjà 15 jours et que je n'ai toujours pas reçu." && echo $NLU_TEXT
 
 NLU_FEATURES='{"sentiment": {}, "keywords": {}, "entities": {}}' && echo "$NLU_FEATURES" | jq .
 
@@ -92,7 +95,7 @@ ibmcloud catalog service-marketplace | grep -i vis
 
 ibmcloud catalog service watson-vision-combined
 	
-ibmcloud resource service-instance-create wvc watson-vision-combined lite eu-de	
+ibmcloud resource service-instance-create wvc watson-vision-combined lite $REGION	
 
 ibmcloud resource service-key-create wvcKey Manager --instance-name wvc
 
@@ -106,13 +109,28 @@ WVC_METHOD="/v3/classify" && echo $WVC_METHOD
 
 WVC_REQUEST="$WVC_METHOD?version=$WVC_VERSION" && echo $WVC_REQUEST
 
-IMG="/home/Pictures/pic0.jpg" && echo $IMG
+IMG="/home/Pictures/pic0.jpg"
+
+[ -f "$IMG" ] && echo ls -Alhtr $IMG || echo "ERROR: IMG does not exists" 
 
 WVC_OUTPUT_DATA="wvc.resp.json"
 
 LANG="fr"
 
 curl -X POST -u 'apikey:'$WVC_APIKEY -H 'Accept-Language: '$LANG -F 'images_file=@'$IMG $WVC_URL$WVC_REQUEST | tee $WVC_OUTPUT_DATA | jq .
+
+# Deploy on Cloud Foundry
+
+ORG=$(ibmcloud account orgs --output JSON | jq -r .[0].OrgName) && echo $ORG
+SPACE=$(ibmcloud account spaces -r $REGION -o $ORG --output JSON | jq -r .[0].name) && echo $SPACE
+
+ibmcloud target --cf -r $REGION -o $ORG -s $SPACE -g $GROUP
+
+ibmcloud resource service-alias-create ta --instance-name ta -g $GROUP -s $SPACE
+ibmcloud resource service-alias-create nlu --instance-name nlu -g $GROUP -s $SPACE
+ibmcloud resource service-alias-create wvc --instance-name wvc -g $GROUP -s $SPACE
+
+#ibmcloud resource service-binding-create wvc  mailbox-analyzer Manager
 
 
 ```
