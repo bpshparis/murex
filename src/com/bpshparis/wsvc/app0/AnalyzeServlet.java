@@ -81,14 +81,14 @@ public class AnalyzeServlet extends HttpServlet {
 			datas.put("FROM", this.getServletName());
 			mailsPath = getServletContext().getRealPath("/res/mails");
 			
-			Map<String, Object> init = (Map<String, Object>) request.getServletContext().getAttribute("init");
-			
-			if(init != null) {
-				if(((String) init.get("STATUS")).equalsIgnoreCase("KO")) {
-					datas.put("INIT", init);
-					throw new Exception("Init KO");
-				}
-			}
+//			Map<String, Object> init = (Map<String, Object>) request.getServletContext().getAttribute("init");
+//			
+//			if(init != null) {
+//				if(((String) init.get("STATUS")).equalsIgnoreCase("KO")) {
+//					datas.put("INIT", init);
+//					throw new Exception("Init KO");
+//				}
+//			}
 
 
 			wvcUrl = (String) request.getServletContext().getAttribute("wvcUrl");

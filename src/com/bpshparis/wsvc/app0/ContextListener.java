@@ -134,7 +134,7 @@ public class ContextListener implements ServletContextListener {
     @SuppressWarnings("unchecked")
 	public void initVCAP_SERVICES() throws Exception{
     	
-		vcap_services = System.getenv("VCAP_SERVICES");
+		vcap_services = System.getenv("VCAP");
 		System.out.println("VCAP_SERVICES read from System ENV.");
 
 		System.out.println("vcap_services=" + vcap_services);

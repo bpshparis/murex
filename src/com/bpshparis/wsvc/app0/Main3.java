@@ -16,8 +16,8 @@ public class Main3 {
 		// TODO Auto-generated method stub
 		String version = "2018-03-19";
 //		String username = "apikey";
-		String password = "6hERFtFs1-hoJ9HADO8E_e18VqI6B-XKacx-6L4SIrGj";
-		String url = "https://gateway.watsonplatform.net/visual-recognition/api";
+		String password = "qSjSwGytyozzHvCRecSqtQ72ifanjld_kO1QScEdXQnw";
+		String url = "https://api.eu-de.visual-recognition.watson.cloud.ibm.com/instances/e2150c4c-24eb-46a1-be8c-8378f41ef9a5";
 		Path path = Paths.get("/home/fr054721/slcdw/image1.jpg");
 		
 		Authenticator authenticator = new IamAuthenticator(password);
@@ -29,6 +29,7 @@ public class Main3 {
 		System.out.println("Classify an image");
 		ClassifyOptions options = new ClassifyOptions.Builder()
 		  .imagesFile(path.toFile()) // replace with path to file
+		  .acceptLanguage("fr")
 		  .build();
 		ClassifiedImages result = service.classify(options).execute().getResult();
 		System.out.println(result);
