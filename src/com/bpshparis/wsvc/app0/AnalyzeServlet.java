@@ -191,7 +191,7 @@ public class AnalyzeServlet extends HttpServlet {
 		
 		ClassifyOptions classifyImagesOptions = new ClassifyOptions.Builder()
 				.acceptLanguage(mail.getLanguage())
-				.imagesFile(Files.newInputStream(path))
+				.imagesFile(path.toFile())
 				.imagesFilename(mail.getPicture())
 				.build();
 		

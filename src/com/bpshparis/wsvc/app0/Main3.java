@@ -30,6 +30,7 @@ public class Main3 {
 		ClassifyOptions options = new ClassifyOptions.Builder()
 		  .imagesFile(path.toFile()) // replace with path to file
 		  .acceptLanguage("fr")
+		  .imagesFilename("sfvsfvsv")
 		  .build();
 		ClassifiedImages result = service.classify(options).execute().getResult();
 		System.out.println(result);

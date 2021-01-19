@@ -1,32 +1,4 @@
 {
-  "91a6b00e-32ab-469e-8a41-2cca18bdc140": {
-    "credentials": [
-      {
-        "id": "resource-key",
-        "name": "taKey",
-        "apikey": "nHzx8w5obn4FNmxzPO5YblMxBixT9LMyZTh9j2zlUndL",
-        "url": "https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/91a6b00e-32ab-469e-8a41-2cca18bdc140",
-        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
-      }
-    ],
-    "service": "tone-analyzer",
-    "region": "eu-de",
-    "instance": "ta"
-  },
-  "36876ed1-cc91-4236-8eb4-09c6ab867706": {
-    "credentials": [
-      {
-        "id": "resource-key",
-        "name": "nluKey",
-        "apikey": "-VQoTtHmjAFj_uRVbINpttXmbQJ9PNf2ljD6U5iTRqjm",
-        "url": "https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com/instances/36876ed1-cc91-4236-8eb4-09c6ab867706",
-        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
-      }
-    ],
-    "service": "natural-language-understanding",
-    "region": "eu-de",
-    "instance": "nlu"
-  },
   "e2150c4c-24eb-46a1-be8c-8378f41ef9a5": {
     "credentials": [
       {
@@ -41,16 +13,32 @@
     "region": "eu-de",
     "instance": "wvc"
   },
-  "2b628cbf-af76-4b08-a324-81456d4c85fd": {
-    "credentials": null,
-    "service": "continuous-delivery",
+  "6c6a0031-3539-4bf2-9e0a-a76b6c12f9c8": {
+    "credentials": [
+      {
+        "id": "resource-key",
+        "name": "taKey",
+        "apikey": "5R_OVLEKAqza6D2sswsYP-5zYhxXA7AxYVwCb4M12Asc",
+        "url": "https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/6c6a0031-3539-4bf2-9e0a-a76b6c12f9c8",
+        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+      }
+    ],
+    "service": "tone-analyzer",
     "region": "eu-de",
-    "instance": "cd0"
+    "instance": "ta"
   },
-  "635eff1c-a74b-4c2d-b6fb-bd850561ea86": {
-    "credentials": null,
-    "service": "toolchain",
+  "29c67e0a-1913-41fe-aed6-9ad7839ac4d1": {
+    "credentials": [
+      {
+        "id": "resource-key",
+        "name": "nluKey",
+        "apikey": "yb0i3zJ8wJQoUgiEtR1BtTxwO1qqgLrFqKOT7ZQJKacE",
+        "url": "https://api.eu-de.natural-language-understanding.watson.cloud.ibm.com/instances/29c67e0a-1913-41fe-aed6-9ad7839ac4d1",
+        "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+      }
+    ],
+    "service": "natural-language-understanding",
     "region": "eu-de",
-    "instance": "tc0"
+    "instance": "nlu"
   }
 }

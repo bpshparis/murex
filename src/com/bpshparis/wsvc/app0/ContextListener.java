@@ -148,13 +148,44 @@ public class ContextListener implements ServletContextListener {
 			throw new Exception(msg);
 		}
 		
+		try {
+			Map<String, Resource> json = (Map<String, Resource>) Tools.fromJSON(vcap_services, new TypeReference<Map<String, Resource>>(){});
+			resources = Arrays.asList(json.values().toArray(new Resource[0]));
+			init.put("STATUS", "OK");
+			init.put("VCAP_SERVICES", json);
+		}
+		catch(Exception e) {
+			init.put("STATUS", "KO");
+			init.put("RESULT","Watson services are not reachable.");
+			init.put("TROUBLESHOOTING","VCAP_SERVICES environment variable should display something like: {\"0\":{\"credentials\":[{\"id\":\"0\",\"name\":\"Auto-generated service credentials\",\"apikey\":\"4Pe0RUDXt......");
+			String msg = "No valid resource were set.";
+			init.put("MSG", msg);
+			throw new Exception(msg);
+		}
+
+		
 //		try {
-//			Map<String, Resource> json = (Map<String, Resource>) Tools.fromJSON(vcap_services, new TypeReference<Map<String, Resource>>(){});
-//			resources = Arrays.asList(json.values().toArray(new Resource[0]));
-//			init.put("STATUS", "OK");
-//			init.put("VCAP_SERVICES", json);
+//			
+//			Map<String, Object> json = Tools.fromJSON(vcap_services);
+//			for(Map.Entry<String, Object> entry: json.entrySet()){
+//				System.out.println(Tools.toJSON(entry.getValue()));
+//				List<Object> values = (List<Object>) entry.getValue();
+//				Map<String, Object> value = (Map<String, Object>) values.get(0);
+//				String name = (String) value.get("name");
+//				System.out.println(name);
+//				Credential cred = (Credential) Tools.fromJSON(Tools.toJSON(value.get("credentials")), new TypeReference<Credential>(){});
+//				System.out.println(Tools.toJSON(cred));
+//				Resource resource = new Resource();
+//				resource.setService(name);
+//				resource.setCredentials(Arrays.asList(cred));
+//				resources.add(resource);
+//				init.put("STATUS", "OK");
+//				init.put("VCAP_SERVICES", json);
+//			}
+//			
 //		}
 //		catch(Exception e) {
+//			e.printStackTrace(System.err);
 //			init.put("STATUS", "KO");
 //			init.put("RESULT","Watson services are not reachable.");
 //			init.put("TROUBLESHOOTING","VCAP_SERVICES environment variable should display something like: {\"0\":{\"credentials\":[{\"id\":\"0\",\"name\":\"Auto-generated service credentials\",\"apikey\":\"4Pe0RUDXt......");
@@ -162,36 +193,6 @@ public class ContextListener implements ServletContextListener {
 //			init.put("MSG", msg);
 //			throw new Exception(msg);
 //		}
-
-		
-		try {
-			
-			Map<String, Object> json = Tools.fromJSON(vcap_services);
-			for(Map.Entry<String, Object> entry: json.entrySet()){
-				System.out.println(Tools.toJSON(entry.getValue()));
-				List<Object> values = (List<Object>) entry.getValue();
-				Map<String, Object> value = (Map<String, Object>) values.get(0);
-				String name = (String) value.get("name");
-				System.out.println(name);
-				Credential cred = (Credential) Tools.fromJSON(Tools.toJSON(value.get("credentials")), new TypeReference<Credential>(){});
-				System.out.println(Tools.toJSON(cred));
-				Resource resource = new Resource();
-				resource.setService(name);
-				resource.setCredentials(Arrays.asList(cred));
-				resources.add(resource);
-				init.put("STATUS", "OK");
-				init.put("VCAP_SERVICES", json);
-			}
-			
-		}
-		catch(Exception e) {
-		init.put("STATUS", "KO");
-		init.put("RESULT","Watson services are not reachable.");
-		init.put("TROUBLESHOOTING","VCAP_SERVICES environment variable should display something like: {\"0\":{\"credentials\":[{\"id\":\"0\",\"name\":\"Auto-generated service credentials\",\"apikey\":\"4Pe0RUDXt......");
-		String msg = "No valid resource were set.";
-		init.put("MSG", msg);
-		throw new Exception(msg);
-	}
 		
 		
     }
@@ -206,7 +207,7 @@ public class ContextListener implements ServletContextListener {
 		String version = props.getProperty("NLU_METHOD").split("=")[1];
 		
 		for(Resource resource: resources) {
-			if(resource.getService().equalsIgnoreCase(serviceName)) {
+			if(resource.getInstance().equalsIgnoreCase(serviceName)) {
 				password = resource.getCredentials().get(0).getApikey();
 				url = resource.getCredentials().get(0).getUrl();
 			}
@@ -231,7 +232,7 @@ public class ContextListener implements ServletContextListener {
 		String version = props.getProperty("TA_METHOD").split("=")[1];
 		
 		for(Resource resource: resources) {
-			if(resource.getService().equalsIgnoreCase(serviceName)) {
+			if(resource.getInstance().equalsIgnoreCase(serviceName)) {
 				password = resource.getCredentials().get(0).getApikey();
 				url = resource.getCredentials().get(0).getUrl();
 			}
@@ -264,7 +265,7 @@ public class ContextListener implements ServletContextListener {
         String version = props.getProperty("WVC_CLASSIFY_METHOD").split("=")[1];
     	
 		for(Resource resource: resources) {
-			if(resource.getService().equalsIgnoreCase(serviceName)) {
+			if(resource.getInstance().equalsIgnoreCase(serviceName)) {
 				password = resource.getCredentials().get(0).getApikey();
 				url = resource.getCredentials().get(0).getUrl();
 			}

@@ -79,7 +79,7 @@ NLU_REQUEST="$NLU_METHOD/?version=$NLU_VERSION" && echo $NLU_REQUEST
 
 NLU_TEXT="J'aimerai avoir des nouvelles de ma commande passée il y a déjà 15 jours et que je n'ai toujours pas reçu." && echo $NLU_TEXT
 
-NLU_FEATURES='{"sentiment": {}, "keywords": {}, "entities": {}}' && echo "$NLU_FEATURES" | jq .
+NLU_FEATURES='{"sentiment": {}, "keywords": {}, "entities": {}, "emotions": {}}' && echo "$NLU_FEATURES" | jq .
 
 NLU_INPUT_DATA="nlu.req.json"
 
@@ -111,7 +111,7 @@ WVC_REQUEST="$WVC_METHOD?version=$WVC_VERSION" && echo $WVC_REQUEST
 
 IMG="/home/Pictures/pic0.jpg"
 
-[ -f "$IMG" ] && echo ls -Alhtr $IMG || echo "ERROR: IMG does not exists" 
+[ -f "$IMG" ] && ls -Alhtr $IMG || echo "ERROR: IMG does not exists" 
 
 WVC_OUTPUT_DATA="wvc.resp.json"
 

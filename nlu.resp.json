@@ -1,29 +1,124 @@
 {
   "usage": {
     "text_units": 1,
-    "text_characters": 106,
-    "features": 3
+    "text_characters": 426,
+    "features": 4
   },
   "sentiment": {
     "document": {
-      "score": -0.925395,
+      "score": -0.929987,
       "label": "negative"
     }
   },
-  "language": "fr",
+  "language": "en",
   "keywords": [
     {
-      "text": "jours",
-      "relevance": 0.5,
+      "text": "waiting room of Hamilton General Hospital",
+      "relevance": 0.884439,
+      "count": 1
+    },
+    {
+      "text": "coffee cup",
+      "relevance": 0.80146,
+      "count": 1
+    },
+    {
+      "text": "waiting room",
+      "relevance": 0.75224,
+      "count": 1
+    },
+    {
+      "text": "comic book",
+      "relevance": 0.718782,
+      "count": 1
+    },
+    {
+      "text": "Brett’s 5th dating anniversary",
+      "relevance": 0.713919,
+      "count": 1
+    },
+    {
+      "text": "Alex",
+      "relevance": 0.571727,
+      "count": 1
+    },
+    {
+      "text": "Calvin",
+      "relevance": 0.544469,
+      "count": 1
+    },
+    {
+      "text": "Brett",
+      "relevance": 0.540813,
+      "count": 1
+    },
+    {
+      "text": "Hobbes",
+      "relevance": 0.540244,
+      "count": 1
+    },
+    {
+      "text": "dinner",
+      "relevance": 0.520296,
+      "count": 1
+    },
+    {
+      "text": "hours",
+      "relevance": 0.516742,
+      "count": 1
+    },
+    {
+      "text": "favourite cartoons",
+      "relevance": 0.414111,
       "count": 1
     }
   ],
   "entities": [
     {
-      "type": "Duration",
-      "text": "15 jours",
-      "relevance": 0.978347,
-      "count": 1
+      "type": "Organization",
+      "text": "Hamilton General Hospital",
+      "relevance": 0.954265,
+      "count": 1,
+      "confidence": 0.347388
+    },
+    {
+      "type": "Person",
+      "text": "Brett",
+      "relevance": 0.496539,
+      "count": 2,
+      "confidence": 0.99998
+    },
+    {
+      "type": "Person",
+      "text": "Hobbes",
+      "relevance": 0.388277,
+      "count": 1,
+      "confidence": 0.904054
+    },
+    {
+      "type": "Person",
+      "text": "Calvin",
+      "relevance": 0.339291,
+      "count": 1,
+      "confidence": 0.846477
+    },
+    {
+      "type": "Person",
+      "text": "Alex",
+      "relevance": 0.14771,
+      "count": 1,
+      "confidence": 0.9917
     }
-  ]
+  ],
+  "emotion": {
+    "document": {
+      "emotion": {
+        "sadness": 0.284293,
+        "joy": 0.531143,
+        "fear": 0.041223,
+        "disgust": 0.119586,
+        "anger": 0.081247
+      }
+    }
+  }
 }

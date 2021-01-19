@@ -7,70 +7,38 @@
                     "name": "default",
                     "classes": [
                         {
-                            "class": "Tidal Basin",
-                            "score": 0.597,
-                            "type_hierarchy": "/nature/Tidal Basin"
+                            "class": "champ de neige",
+                            "score": 0.69
+                        },
+                        {
+                            "class": "scène neigeuse",
+                            "score": 0.5,
+                            "type_hierarchy": "/nature/scène neigeuse"
                         },
                         {
                             "class": "nature",
-                            "score": 0.812
-                        },
-                        {
-                            "class": "littoral maritime",
-                            "score": 0.652,
-                            "type_hierarchy": "/nature/rivage/littoral maritime"
-                        },
-                        {
-                            "class": "rivage",
-                            "score": 0.693
-                        },
-                        {
-                            "class": "littoral (plages de sable)",
-                            "score": 0.546,
-                            "type_hierarchy": "/nature/rivage/littoral maritime/littoral (plages de sable)"
-                        },
-                        {
-                            "class": "embarcation",
-                            "score": 0.529,
-                            "type_hierarchy": "/véhicule/embarcation"
-                        },
-                        {
-                            "class": "véhicule",
-                            "score": 0.529
-                        },
-                        {
-                            "class": "limite (côtière) des 3 milles",
-                            "score": 0.5,
-                            "type_hierarchy": "/nature/limite (côtière) des 3 milles"
-                        },
-                        {
-                            "class": "bord de l'eau",
                             "score": 0.5
                         },
                         {
-                            "class": "piste",
-                            "score": 0.799
+                            "class": "animal",
+                            "score": 0.6
                         },
                         {
-                            "class": "élévation naturelle",
-                            "score": 0.797
+                            "class": "chien",
+                            "score": 0.588
                         },
                         {
-                            "class": "bateau",
-                            "score": 0.791
-                        },
-                        {
-                            "class": "couleur bleu",
-                            "score": 0.837
+                            "class": "couleur anthracite",
+                            "score": 0.866
                         },
                         {
                             "class": "couleur gris",
-                            "score": 0.769
+                            "score": 0.588
                         }
                     ]
                 }
             ],
-            "image": "image1.jpg"
+            "image": "pic0.jpg"
         }
     ],
     "images_processed": 1,

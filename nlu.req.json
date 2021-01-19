@@ -1,33 +1,9 @@
 {
-  "text": "J'aimerai avoir des nouvelles de ma commande passée il y a déjà 15 jours et que je n'ai toujours pas reçu.",
+  "text": "She sat there in the waiting room of Hamilton General Hospital on what would have been her and Brett’s 5th dating anniversary. She reached for her coffee cup and sat there reading a Calvin and Hobbes comic book, which happened to be one of her favourite cartoons. It was snowing very heavily outside and Alex had already been sitting in the waiting room for four hours. Brett had promised to take her for dinner at a local ...",
   "features": {
-    "concepts": {},
-    "emotion": {},
-    "entities": {
-      "mentions": true,
-      "sentiment": true,
-      "emotion": true
-    },
-    "keywords": {
-      "sentiment": true,
-      "emotion": true
-    },
-    "relations": {},
-    "semantic_roles": {
-      "keywords": true,
-      "entities": true
-    },
     "sentiment": {},
-    "categories": {
-      "explanation": true
-    },
-    "syntax": {
-      "tokens": {
-        "lemma": true,
-        "part_of_speech": true
-      },
-      "sentences": true
-    }
-  },
-  "return_analyzed_text": true
+    "keywords": {},
+    "entities": {},
+    "emotion": {}
+  }
 }
