@@ -9,6 +9,10 @@ sudo docker start slcdw
 
 sudo docker attach slcdw
 
+cd ~
+WORKDIR="Webinar-FTPS"
+mkdir $WORKDIR && cd $WORKDIR
+
 curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
 
 ibmcloud update
@@ -19,13 +23,16 @@ export USERID="sebastien.gautier@fr.ibm.com"
 
 ibmcloud login -u ${USERID} --sso
 
-ibmcloud iam api-key-create apikey1 -d "apikey1" --file /home/apikey1
+IC_APIKEY="ic_apikey"
 
-GROUP=$(ibmcloud resource groups --output json | jq -r .[0].name) && echo $GROUP
-GROUP="default"
+ibmcloud iam api-key-create $IC_APIKEY -d "$IC_APIKEY" --file $IC_APIKEY
+
+GROUP=$(ibmcloud resource groups --output json | jq -r .[0].name)
+[ -z "$GROUP" ] && GROUP="default" || echo "group already set to" $GROUP 
+echo $GROUP
 REGION="eu-de" && echo $REGION
 
-ibmcloud login --apikey @/home/apikey1 -r $REGION -g $GROUP
+ibmcloud login --apikey @$IC_APIKEY -r $REGION -g $GROUP
 
 # Start Tone Analyzer
 
@@ -135,7 +142,7 @@ WVC_METHOD="/v3/classify" && echo $WVC_METHOD
 
 WVC_REQUEST="$WVC_METHOD?version=$WVC_VERSION" && echo $WVC_REQUEST
 
-IMG="/home/Pictures/pic1.jpg"
+IMG=~/"Pictures/pic1.jpg"
 
 [ -f "$IMG" ] && ls -Alhtr $IMG || echo "ERROR: IMG does not exists" 
 
@@ -156,7 +163,18 @@ ibmcloud resource service-alias-create ta --instance-name ta -g $GROUP -s $SPACE
 ibmcloud resource service-alias-create nlu --instance-name nlu -g $GROUP -s $SPACE
 ibmcloud resource service-alias-create wvc --instance-name wvc -g $GROUP -s $SPACE
 
-#ibmcloud resource service-binding-create wvc  mailbox-analyzer Manager
+# Get application code
+
+git clone https://github.com/bpshparis/slcdw
+
+cd slcdw
+
+ibmcloud cf domains
+
+vi manifest.yaml
+
+ibmcloud cf p
+
 
 
 ```
