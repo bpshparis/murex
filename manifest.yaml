@@ -1,9 +1,6 @@
 # WARNING: Only hyphen (e.g. -) are supported in hostname. Don't add any dot.
 # host must be unique in domain
-<<<<<<< HEAD:manifest.yml
-=======
 applications:
->>>>>>> abf46d54ea716a2f90283694207ab5c43a5db1bb:manifest.yaml
 - host: mailbox-analyzer
   disk: 256M
   #name must be unique in your space
@@ -14,12 +11,6 @@ applications:
   mem: 256M
   instances: 1
   services:
-<<<<<<< HEAD:manifest.yml
   - ta
   - nlu
   - wvc
-=======
-   - ta
-   - nlu
-   - wvc
->>>>>>> abf46d54ea716a2f90283694207ab5c43a5db1bb:manifest.yaml

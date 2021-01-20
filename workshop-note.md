@@ -9,10 +9,11 @@ sudo docker start slcdw
 
 sudo docker attach slcdw
 
+curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+
 ibmcloud update
 
 ibmcloud config --check-version false
-ibmcloud config --usage-stats-collect false
 
 export USERID="sebastien.gautier@fr.ibm.com"
 
@@ -21,6 +22,7 @@ ibmcloud login -u ${USERID} --sso
 ibmcloud iam api-key-create apikey1 -d "apikey1" --file /home/apikey1
 
 GROUP=$(ibmcloud resource groups --output json | jq -r .[0].name) && echo $GROUP
+GROUP="default"
 REGION="eu-de" && echo $REGION
 
 ibmcloud login --apikey @/home/apikey1 -r $REGION -g $GROUP
@@ -29,13 +31,21 @@ ibmcloud login --apikey @/home/apikey1 -r $REGION -g $GROUP
 
 ibmcloud catalog service-marketplace | grep -i tone
 
-ibmcloud catalog service tone-analyzer
+TA_SVC="tone-analyzer"
 
-ibmcloud resource service-instance-create ta tone-analyzer lite $REGION
+ibmcloud catalog service $TA_SVC
 
-ibmcloud resource service-key-create taKey Manager --instance-name ta
+TA_NAME="ta"
+TA_PLAN="lite"
+TA_REGION="eu-de"
 
-TA_APIKEY=$(ibmcloud resource service-key taKey --output json | jq -r .[].credentials.apikey) && echo $TA_APIKEY
+ibmcloud resource service-instance-create $TA_NAME $TA_SVC $TA_PLAN $TA_REGION
+
+TA_KEYNAME="taKey"
+
+ibmcloud resource service-key-create $TA_KEYNAME Manager --instance-name $TA_NAME
+
+TA_APIKEY=$(ibmcloud resource service-key $TA_KEYNAME --output json | jq -r .[].credentials.apikey) && echo $TA_APIKEY
 
 TA_URL=$(ibmcloud resource service-key taKey --output json | jq -r .[].credentials.url) && echo $TA_URL
 
@@ -53,19 +63,27 @@ jq -n --arg value "$TA_TEXT" '{"text": $value}' | tee $TA_INPUT_DATA | jq .
 
 TA_OUTPU_DATA="ta.resp.json"
 
-LANG="fr"
+TA_LANG="fr"
 
-curl -X POST -u 'apikey:'$TA_APIKEY -H 'Content-Type: application/json' -H 'Content-Language: '$LANG -H 'Accept-Language: '$LANG -d @$TA_INPUT_DATA $TA_URL$TA_REQUEST | tee $TA_OUTPU_DATA | jq .
+curl -X POST -u 'apikey:'$TA_APIKEY -H 'Content-Type: application/json' -H 'Content-Language: '$TA_LANG -H 'Accept-Language: '$TA_LANG -d @$TA_INPUT_DATA $TA_URL$TA_REQUEST | tee $TA_OUTPU_DATA | jq .
 
 # Start Natural Language Understanding
 
-ibmcloud catalog service-marketplace | grep -i understand
+ibmcloud catalog service-marketplace | grep -i language
 
-ibmcloud catalog service natural-language-understanding
+NLU_SVC="natural-language-understanding"
 
-ibmcloud resource service-instance-create nlu natural-language-understanding free $REGION	
+ibmcloud catalog service $NLU_SVC
 
-ibmcloud resource service-key-create nluKey Manager --instance-name nlu
+NLU_NAME="nlu"
+NLU_PLAN="free"
+NLU_REGION="eu-de"
+
+ibmcloud resource service-instance-create $NLU_NAME $NLU_SVC $NLU_PLAN $NLU_REGION	
+
+NLU_KEYNAME="nluKey"
+
+ibmcloud resource service-key-create $NLU_KEYNAME Manager --instance-name $NLU_NAME
 
 NLU_APIKEY=$(ibmcloud resource service-key nluKey --output json | jq -r .[].credentials.apikey) && echo $NLU_APIKEY
 	
@@ -79,7 +97,7 @@ NLU_REQUEST="$NLU_METHOD/?version=$NLU_VERSION" && echo $NLU_REQUEST
 
 NLU_TEXT="J'aimerai avoir des nouvelles de ma commande passée il y a déjà 15 jours et que je n'ai toujours pas reçu." && echo $NLU_TEXT
 
-NLU_FEATURES='{"sentiment": {}, "keywords": {}, "entities": {}, "emotions": {}}' && echo "$NLU_FEATURES" | jq .
+NLU_FEATURES='{"sentiment": {}, "keywords": {}, "entities": {}, "emotion": {}}' && echo "$NLU_FEATURES" | jq .
 
 NLU_INPUT_DATA="nlu.req.json"
 
@@ -91,15 +109,23 @@ curl -X POST -u 'apikey:'$NLU_APIKEY -H 'Content-Type: application/json' -d @$NL
 
 # Start Visual Recognition
 
-ibmcloud catalog service-marketplace | grep -i vis
+ibmcloud catalog service-marketplace | grep -i vision
 
-ibmcloud catalog service watson-vision-combined
+WVC_SVC="watson-vision-combined"
+
+ibmcloud catalog service $WVC_SVC
+
+WVC_NAME="wvc"
+WVC_PLAN="lite"
+WVC_REGION="eu-de"
 	
-ibmcloud resource service-instance-create wvc watson-vision-combined lite $REGION	
+ibmcloud resource service-instance-create $WVC_NAME $WVC_SVC $WVC_PLAN $WVC_REGION	
 
-ibmcloud resource service-key-create wvcKey Manager --instance-name wvc
+WVC_KEYNAME="wvcKey"
 
-WVC_APIKEY=$(ibmcloud resource service-key wvcKey --output json | jq -r .[].credentials.apikey) && echo $WVC_APIKEY
+ibmcloud resource service-key-create $WVC_KEYNAME Manager --instance-name $WVC_NAME
+
+WVC_APIKEY=$(ibmcloud resource service-key $WVC_KEYNAME --output json | jq -r .[].credentials.apikey) && echo $WVC_APIKEY
 
 WVC_URL=$(ibmcloud resource service-key wvcKey --output json | jq -r .[].credentials.url) && echo $WVC_URL
 
@@ -109,15 +135,15 @@ WVC_METHOD="/v3/classify" && echo $WVC_METHOD
 
 WVC_REQUEST="$WVC_METHOD?version=$WVC_VERSION" && echo $WVC_REQUEST
 
-IMG="/home/Pictures/pic0.jpg"
+IMG="/home/Pictures/pic1.jpg"
 
 [ -f "$IMG" ] && ls -Alhtr $IMG || echo "ERROR: IMG does not exists" 
 
 WVC_OUTPUT_DATA="wvc.resp.json"
 
-LANG="fr"
+WVC_LANG="fr"
 
-curl -X POST -u 'apikey:'$WVC_APIKEY -H 'Accept-Language: '$LANG -F 'images_file=@'$IMG $WVC_URL$WVC_REQUEST | tee $WVC_OUTPUT_DATA | jq .
+curl -X POST -u 'apikey:'$WVC_APIKEY -H 'Accept-Language: '$WVC_LANG -F 'images_file=@'$IMG $WVC_URL$WVC_REQUEST | tee $WVC_OUTPUT_DATA | jq .
 
 # Deploy on Cloud Foundry
 

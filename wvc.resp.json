@@ -7,38 +7,34 @@
                     "name": "default",
                     "classes": [
                         {
-                            "class": "champ de neige",
-                            "score": 0.69
+                            "class": "panda géant",
+                            "score": 0.937,
+                            "type_hierarchy": "/animal/mammifère/carnivore/panda géant"
                         },
                         {
-                            "class": "scène neigeuse",
-                            "score": 0.5,
-                            "type_hierarchy": "/nature/scène neigeuse"
+                            "class": "carnivore",
+                            "score": 0.937
                         },
                         {
-                            "class": "nature",
-                            "score": 0.5
+                            "class": "mammifère",
+                            "score": 0.939
                         },
                         {
                             "class": "animal",
-                            "score": 0.6
+                            "score": 0.941
                         },
                         {
-                            "class": "chien",
-                            "score": 0.588
+                            "class": "couleur noir charbon",
+                            "score": 0.822
                         },
                         {
-                            "class": "couleur anthracite",
-                            "score": 0.866
-                        },
-                        {
-                            "class": "couleur gris",
-                            "score": 0.588
+                            "class": "couleur verdâtre",
+                            "score": 0.666
                         }
                     ]
                 }
             ],
-            "image": "pic0.jpg"
+            "image": "pic1.jpg"
         }
     ],
     "images_processed": 1,

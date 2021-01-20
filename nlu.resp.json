@@ -1,123 +1,117 @@
 {
   "usage": {
     "text_units": 1,
-    "text_characters": 426,
+    "text_characters": 441,
     "features": 4
   },
   "sentiment": {
     "document": {
-      "score": -0.929987,
+      "score": -0.712248,
       "label": "negative"
     }
   },
   "language": "en",
   "keywords": [
     {
-      "text": "waiting room of Hamilton General Hospital",
-      "relevance": 0.884439,
+      "text": "cold stone",
+      "relevance": 0.999784,
       "count": 1
     },
     {
-      "text": "coffee cup",
-      "relevance": 0.80146,
+      "text": "cold yellow light",
+      "relevance": 0.96078,
       "count": 1
     },
     {
-      "text": "waiting room",
-      "relevance": 0.75224,
+      "text": "Yellow Day Today",
+      "relevance": 0.716651,
       "count": 1
     },
     {
-      "text": "comic book",
-      "relevance": 0.718782,
+      "text": "sunlight sneaks",
+      "relevance": 0.594524,
       "count": 1
     },
     {
-      "text": "Brett’s 5th dating anniversary",
-      "relevance": 0.713919,
+      "text": "leafy pecan tree shakes",
+      "relevance": 0.559623,
       "count": 1
     },
     {
-      "text": "Alex",
-      "relevance": 0.571727,
+      "text": "snake",
+      "relevance": 0.531545,
       "count": 1
     },
     {
-      "text": "Calvin",
-      "relevance": 0.544469,
+      "text": "city",
+      "relevance": 0.528636,
       "count": 1
     },
     {
-      "text": "Brett",
-      "relevance": 0.540813,
+      "text": "window",
+      "relevance": 0.526825,
       "count": 1
     },
     {
-      "text": "Hobbes",
-      "relevance": 0.540244,
+      "text": "facts",
+      "relevance": 0.525692,
       "count": 1
     },
     {
-      "text": "dinner",
-      "relevance": 0.520296,
+      "text": "sun",
+      "relevance": 0.521472,
       "count": 1
     },
     {
-      "text": "hours",
-      "relevance": 0.516742,
+      "text": "words",
+      "relevance": 0.517831,
+      "count": 2
+    },
+    {
+      "text": "floor",
+      "relevance": 0.517249,
       "count": 1
     },
     {
-      "text": "favourite cartoons",
-      "relevance": 0.414111,
+      "text": "poetry",
+      "relevance": 0.516421,
       "count": 1
+    },
+    {
+      "text": "snakes",
+      "relevance": 0.515788,
+      "count": 1
+    },
+    {
+      "text": "wind",
+      "relevance": 0.513896,
+      "count": 1
+    },
+    {
+      "text": "information",
+      "relevance": 0.513896,
+      "count": 1
+    },
+    {
+      "text": "yellow day",
+      "relevance": 0.455583,
+      "count": 1
+    },
+    {
+      "text": "time",
+      "relevance": 0.252827,
+      "count": 2
     }
   ],
-  "entities": [
-    {
-      "type": "Organization",
-      "text": "Hamilton General Hospital",
-      "relevance": 0.954265,
-      "count": 1,
-      "confidence": 0.347388
-    },
-    {
-      "type": "Person",
-      "text": "Brett",
-      "relevance": 0.496539,
-      "count": 2,
-      "confidence": 0.99998
-    },
-    {
-      "type": "Person",
-      "text": "Hobbes",
-      "relevance": 0.388277,
-      "count": 1,
-      "confidence": 0.904054
-    },
-    {
-      "type": "Person",
-      "text": "Calvin",
-      "relevance": 0.339291,
-      "count": 1,
-      "confidence": 0.846477
-    },
-    {
-      "type": "Person",
-      "text": "Alex",
-      "relevance": 0.14771,
-      "count": 1,
-      "confidence": 0.9917
-    }
-  ],
+  "entities": [],
   "emotion": {
     "document": {
       "emotion": {
-        "sadness": 0.284293,
-        "joy": 0.531143,
-        "fear": 0.041223,
-        "disgust": 0.119586,
-        "anger": 0.081247
+        "sadness": 0.205446,
+        "joy": 0.555417,
+        "fear": 0.537685,
+        "disgust": 0.094956,
+        "anger": 0.089375
       }
     }
   }
