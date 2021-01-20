@@ -9,14 +9,16 @@ sudo docker start slcdw
 
 sudo docker attach slcdw
 
+geeqie ~/slcdw/appFlow.jpg
+
 cd ~
 WORKDIR="Webinar-FTPS"
+[ -d "$WORDIR"] && rm -rf $WORKDIR
 mkdir $WORKDIR && cd $WORKDIR
 
 curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
 
 ibmcloud update
-
 ibmcloud config --check-version false
 
 export USERID="sebastien.gautier@fr.ibm.com"
@@ -68,11 +70,11 @@ TA_INPUT_DATA="ta.req.json"
 
 jq -n --arg value "$TA_TEXT" '{"text": $value}' | tee $TA_INPUT_DATA | jq .
 
-TA_OUTPU_DATA="ta.resp.json"
+TA_OUTPUT_DATA="ta.resp.json"
 
 TA_LANG="fr"
 
-curl -X POST -u 'apikey:'$TA_APIKEY -H 'Content-Type: application/json' -H 'Content-Language: '$TA_LANG -H 'Accept-Language: '$TA_LANG -d @$TA_INPUT_DATA $TA_URL$TA_REQUEST | tee $TA_OUTPU_DATA | jq .
+curl -X POST -u 'apikey:'$TA_APIKEY -H 'Content-Type: application/json' -H 'Content-Language: '$TA_LANG -H 'Accept-Language: '$TA_LANG -d @$TA_INPUT_DATA $TA_URL$TA_REQUEST | tee $TA_OUTPUT_DATA | jq .
 
 # Start Natural Language Understanding
 
@@ -153,6 +155,8 @@ WVC_LANG="fr"
 curl -X POST -u 'apikey:'$WVC_APIKEY -H 'Accept-Language: '$WVC_LANG -F 'images_file=@'$IMG $WVC_URL$WVC_REQUEST | tee $WVC_OUTPUT_DATA | jq .
 
 # Deploy on Cloud Foundry
+
+ibmcloud target
 
 ORG=$(ibmcloud account orgs --output JSON | jq -r .[0].OrgName) && echo $ORG
 SPACE=$(ibmcloud account spaces -r $REGION -o $ORG --output JSON | jq -r .[0].name) && echo $SPACE
